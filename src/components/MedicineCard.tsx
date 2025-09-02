@@ -2,6 +2,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Pill, CheckCircle, Info } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 interface MedicineCardProps {
   name: string;
@@ -18,6 +19,13 @@ export default function MedicineCard({
   features, 
   isPopular = false 
 }: MedicineCardProps) {
+  const navigate = useNavigate();
+
+  const handleViewDetails = () => {
+    const medicineSlug = name.toLowerCase().replace(/[\s-]+/g, '');
+    navigate(`/medicine/${medicineSlug}`);
+  };
+
   return (
     <Card className="group relative bg-gradient-card border-border/50 hover:shadow-medical transition-all duration-500 hover:scale-105 transform overflow-hidden animate-fade-in">
       {/* Glow effect on hover */}
@@ -69,6 +77,7 @@ export default function MedicineCard({
             variant="medical" 
             size="sm" 
             className="flex-1"
+            onClick={handleViewDetails}
           >
             <Info className="h-4 w-4" />
             View Details
