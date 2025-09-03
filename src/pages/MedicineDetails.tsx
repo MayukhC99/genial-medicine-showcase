@@ -1,4 +1,5 @@
 import { useParams, useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -23,6 +24,11 @@ import {
 export default function MedicineDetails() {
   const { medicineName } = useParams<{ medicineName: string }>();
   const navigate = useNavigate();
+
+  // Scroll to top when component mounts
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [medicineName]);
 
   // Mock medicine data - in real app, this would come from API/database
   const medicineData: Record<string, any> = {
@@ -264,7 +270,15 @@ export default function MedicineDetails() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
           {/* 3D Medicine Visualization */}
           <div className="relative animate-fade-in">
-            <MedicineBottle3D medicineName={medicine.name} color={medicine.color} />
+            <div className="bg-gradient-card rounded-xl p-6 shadow-medical border border-border/50">
+              <h3 className="text-xl font-semibold mb-4 text-center text-foreground">
+                Interactive 3D Model
+              </h3>
+              <MedicineBottle3D medicineName={medicine.name} color={medicine.color} />
+              <p className="text-xs text-muted-foreground text-center mt-4">
+                🔄 Rotate • 🔍 Zoom • ✨ Interactive Medicine Bottle
+              </p>
+            </div>
           </div>
 
           {/* Medicine Overview */}
