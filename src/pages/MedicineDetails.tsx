@@ -6,7 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { Progress } from "@/components/ui/progress";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import MedicineBottle3D from "@/components/MedicineBottle3D";
+import MedicineImageGallery from "@/components/MedicineImageGallery";
 import { 
   ArrowLeft, 
   CheckCircle, 
@@ -272,12 +272,9 @@ export default function MedicineDetails() {
           <div className="relative animate-fade-in">
             <div className="bg-gradient-card rounded-xl p-6 shadow-medical border border-border/50">
               <h3 className="text-xl font-semibold mb-4 text-center text-foreground">
-                Interactive 3D Model
+                Product Gallery
               </h3>
-              <MedicineBottle3D medicineName={medicine.name} color={medicine.color} />
-              <p className="text-xs text-muted-foreground text-center mt-4">
-                🔄 Rotate • 🔍 Zoom • ✨ Interactive Medicine Bottle
-              </p>
+              <MedicineImageGallery medicineName={medicine.name} color={medicine.color} />
             </div>
           </div>
 
