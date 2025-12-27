@@ -1,9 +1,24 @@
 import MedicineCard from "@/components/MedicineCard";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ArrowRight, Sparkles, User, PawPrint } from "lucide-react";
 
 export default function MedicinesSection() {
-  const medicines = [
+  const humanMedicines = [
+    {
+      name: "GeniLiv",
+      category: "Liver Care",
+      description: "Advanced hepatoprotective formula designed to support liver function and promote hepatic regeneration.",
+      features: [
+        "Supports liver detoxification",
+        "Promotes hepatic cell regeneration",
+        "Reduces oxidative stress",
+        "Improves liver enzyme levels"
+      ],
+      isPopular: true
+    }
+  ];
+
+  const veterinaryMedicines = [
     {
       name: "GeniLiv",
       category: "Liver Care",
@@ -131,17 +146,48 @@ export default function MedicinesSection() {
           </p>
         </div>
 
-        {/* Medicines Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-          {medicines.map((medicine, index) => (
-            <div
-              key={medicine.name}
-              className="animate-fade-in"
-              style={{ animationDelay: `${index * 150}ms` }}
-            >
-              <MedicineCard {...medicine} />
+        {/* Human Medicines Section */}
+        <div className="mb-16">
+          <div className="flex items-center gap-3 mb-8">
+            <div className="p-3 rounded-xl bg-primary/10 border border-primary/20">
+              <User className="h-6 w-6 text-primary" />
             </div>
-          ))}
+            <h3 className="text-3xl font-bold text-foreground">Human Healthcare</h3>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {humanMedicines.map((medicine, index) => (
+              <div
+                key={medicine.name}
+                className="animate-fade-in"
+                style={{ animationDelay: `${index * 150}ms` }}
+              >
+                <MedicineCard {...medicine} />
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Veterinary Medicines Section */}
+        <div className="mb-16">
+          <div className="flex items-center gap-3 mb-8">
+            <div className="p-3 rounded-xl bg-accent/10 border border-accent/20">
+              <PawPrint className="h-6 w-6 text-accent" />
+            </div>
+            <h3 className="text-3xl font-bold text-foreground">Veterinary Healthcare</h3>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {veterinaryMedicines.map((medicine, index) => (
+              <div
+                key={`vet-${medicine.name}`}
+                className="animate-fade-in"
+                style={{ animationDelay: `${index * 150}ms` }}
+              >
+                <MedicineCard {...medicine} />
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* Call to Action */}
