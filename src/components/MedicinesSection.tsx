@@ -1,8 +1,15 @@
 import MedicineCard from "@/components/MedicineCard";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Sparkles, User, PawPrint } from "lucide-react";
+import { ArrowRight, Sparkles, User, PawPrint, ChevronDown } from "lucide-react";
+import { useState } from "react";
 
 export default function MedicinesSection() {
+  const [expandedSection, setExpandedSection] = useState<string | null>(null);
+
+  const toggleSection = (section: string) => {
+    setExpandedSection(expandedSection === section ? null : section);
+  };
+
   const humanMedicines = [
     {
       name: "GeniLiv",
@@ -146,47 +153,104 @@ export default function MedicinesSection() {
           </p>
         </div>
 
-        {/* Human Medicines Section */}
-        <div className="mb-16">
-          <div className="flex items-center gap-3 mb-8">
-            <div className="p-3 rounded-xl bg-primary/10 border border-primary/20">
-              <User className="h-6 w-6 text-primary" />
-            </div>
-            <h3 className="text-3xl font-bold text-foreground">Human Healthcare</h3>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {humanMedicines.map((medicine, index) => (
-              <div
-                key={medicine.name}
-                className="animate-fade-in"
-                style={{ animationDelay: `${index * 150}ms` }}
-              >
-                <MedicineCard {...medicine} />
+        {/* Category Cards */}
+        <div className="space-y-6 mb-16">
+          {/* Human Healthcare Category */}
+          <div className="rounded-2xl border border-border/50 bg-gradient-card shadow-medical overflow-hidden">
+            <button
+              onClick={() => toggleSection('human')}
+              className="w-full flex items-center justify-between p-6 hover:bg-primary/5 transition-colors duration-300 group"
+            >
+              <div className="flex items-center gap-4">
+                <div className="p-4 rounded-xl bg-primary/10 border border-primary/20 group-hover:bg-primary/20 transition-colors duration-300">
+                  <User className="h-8 w-8 text-primary" />
+                </div>
+                <div className="text-left">
+                  <h3 className="text-2xl md:text-3xl font-bold text-foreground">Human Healthcare</h3>
+                  <p className="text-muted-foreground mt-1">{humanMedicines.length} product{humanMedicines.length > 1 ? 's' : ''} available</p>
+                </div>
               </div>
-            ))}
+              <ChevronDown 
+                className={`h-8 w-8 text-primary transition-transform duration-500 ease-out ${
+                  expandedSection === 'human' ? 'rotate-180' : ''
+                }`} 
+              />
+            </button>
+            
+            <div
+              className={`grid transition-all duration-500 ease-out ${
+                expandedSection === 'human' 
+                  ? 'grid-rows-[1fr] opacity-100' 
+                  : 'grid-rows-[0fr] opacity-0'
+              }`}
+            >
+              <div className="overflow-hidden">
+                <div className="p-6 pt-0 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                  {humanMedicines.map((medicine, index) => (
+                    <div
+                      key={medicine.name}
+                      className={`transition-all duration-500 ${
+                        expandedSection === 'human' 
+                          ? 'translate-y-0 opacity-100' 
+                          : 'translate-y-4 opacity-0'
+                      }`}
+                      style={{ transitionDelay: expandedSection === 'human' ? `${index * 100}ms` : '0ms' }}
+                    >
+                      <MedicineCard {...medicine} />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
 
-        {/* Veterinary Medicines Section */}
-        <div className="mb-16">
-          <div className="flex items-center gap-3 mb-8">
-            <div className="p-3 rounded-xl bg-accent/10 border border-accent/20">
-              <PawPrint className="h-6 w-6 text-accent" />
-            </div>
-            <h3 className="text-3xl font-bold text-foreground">Veterinary Healthcare</h3>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {veterinaryMedicines.map((medicine, index) => (
-              <div
-                key={`vet-${medicine.name}`}
-                className="animate-fade-in"
-                style={{ animationDelay: `${index * 150}ms` }}
-              >
-                <MedicineCard {...medicine} />
+          {/* Veterinary Healthcare Category */}
+          <div className="rounded-2xl border border-border/50 bg-gradient-card shadow-medical overflow-hidden">
+            <button
+              onClick={() => toggleSection('veterinary')}
+              className="w-full flex items-center justify-between p-6 hover:bg-accent/5 transition-colors duration-300 group"
+            >
+              <div className="flex items-center gap-4">
+                <div className="p-4 rounded-xl bg-accent/10 border border-accent/20 group-hover:bg-accent/20 transition-colors duration-300">
+                  <PawPrint className="h-8 w-8 text-accent" />
+                </div>
+                <div className="text-left">
+                  <h3 className="text-2xl md:text-3xl font-bold text-foreground">Veterinary Healthcare</h3>
+                  <p className="text-muted-foreground mt-1">{veterinaryMedicines.length} products available</p>
+                </div>
               </div>
-            ))}
+              <ChevronDown 
+                className={`h-8 w-8 text-accent transition-transform duration-500 ease-out ${
+                  expandedSection === 'veterinary' ? 'rotate-180' : ''
+                }`} 
+              />
+            </button>
+            
+            <div
+              className={`grid transition-all duration-500 ease-out ${
+                expandedSection === 'veterinary' 
+                  ? 'grid-rows-[1fr] opacity-100' 
+                  : 'grid-rows-[0fr] opacity-0'
+              }`}
+            >
+              <div className="overflow-hidden">
+                <div className="p-6 pt-0 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                  {veterinaryMedicines.map((medicine, index) => (
+                    <div
+                      key={`vet-${medicine.name}`}
+                      className={`transition-all duration-500 ${
+                        expandedSection === 'veterinary' 
+                          ? 'translate-y-0 opacity-100' 
+                          : 'translate-y-4 opacity-0'
+                      }`}
+                      style={{ transitionDelay: expandedSection === 'veterinary' ? `${index * 100}ms` : '0ms' }}
+                    >
+                      <MedicineCard {...medicine} />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
