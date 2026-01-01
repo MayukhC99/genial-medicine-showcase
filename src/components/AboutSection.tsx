@@ -57,7 +57,7 @@ export default function AboutSection() {
               </span>
             </h2>
             
-            <p className="text-lg text-muted-foreground leading-relaxed mb-8">bGenial Healthcare Pvt. Ltd. has been serving the healthcare and nutrition space for over 15 years, driven by a clear vision: to deliver reliable, high-quality medicines and nutrition solutions while creating lasting value for customers and employees alike.</p>
+            <p className="text-lg text-muted-foreground leading-relaxed mb-8">Genial Healthcare Pvt. Ltd. has been serving the healthcare and nutrition space for over 15 years, driven by a clear vision: to deliver reliable, high-quality medicines and nutrition solutions while creating lasting value for customers and employees alike.</p>
             
             <p className="text-lg text-muted-foreground leading-relaxed mb-8">
               Our commitment to excellence, combined with cutting-edge research and 
