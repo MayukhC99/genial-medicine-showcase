@@ -1,7 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { 
-  Heart, 
   Mail, 
   Phone, 
   MapPin,
@@ -10,6 +9,7 @@ import {
   Twitter,
   Facebook
 } from "lucide-react";
+import genialLogo from "@/assets/genial-logo.jpeg";
 
 export default function Footer() {
   const scrollToTop = () => {
@@ -57,9 +57,11 @@ export default function Footer() {
           {/* Company Info */}
           <div className="lg:col-span-1 animate-fade-in">
             <div className="flex items-center gap-2 mb-6">
-              <div className="p-2 rounded-full bg-gradient-primary">
-                <Heart className="h-6 w-6 text-white" />
-              </div>
+              <img 
+                src={genialLogo} 
+                alt="Genial Healthcare Logo" 
+                className="h-10 w-10 rounded-lg object-cover"
+              />
               <span className="text-xl font-bold">
                 Genial Health Care
               </span>
