@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Heart } from "lucide-react";
+import { Menu, X } from "lucide-react";
+import genialLogo from "@/assets/genial-logo.jpeg";
 
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -17,14 +18,16 @@ export default function Navigation() {
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <div className="flex items-center gap-2 group">
-            <div className="p-2 rounded-full bg-gradient-primary group-hover:animate-pulse-glow transition-all duration-300">
-              <Heart className="h-6 w-6 text-white" />
-            </div>
+          <a href="#home" className="flex items-center gap-2 group">
+            <img 
+              src={genialLogo} 
+              alt="Genial Healthcare Logo" 
+              className="h-10 w-10 rounded-lg object-cover group-hover:scale-105 transition-transform duration-300"
+            />
             <span className="text-xl font-bold bg-gradient-primary bg-clip-text text-transparent">
               Genial Health Care
             </span>
-          </div>
+          </a>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
