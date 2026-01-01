@@ -5,6 +5,8 @@ import medicineBottle1 from "@/assets/medicine-bottle-1.jpg";
 import medicineBottle2 from "@/assets/medicine-bottle-2.jpg";
 import medicineBottle3 from "@/assets/medicine-bottle-3.jpg";
 import medicineBox1 from "@/assets/medicine-box-1.jpg";
+import genilivBottleBox from "@/assets/geniliv-bottle-box.jpg";
+import genilivBox from "@/assets/geniliv-box.jpg";
 
 interface MedicineImageGalleryProps {
   medicineName: string;
@@ -16,13 +18,21 @@ export default function MedicineImageGallery({ medicineName }: MedicineImageGall
   const [isZoomed, setIsZoomed] = useState(false);
   const [zoomPosition, setZoomPosition] = useState({ x: 0, y: 0 });
 
-  // Mock images - in real app, these would be specific to each medicine
-  const images = [
+  // Product-specific images
+  const genilivImages = [
+    { src: genilivBottleBox, alt: "GeniLiv bottle with packaging", label: "Product View" },
+    { src: genilivBox, alt: "GeniLiv packaging box", label: "Packaging" }
+  ];
+
+  const defaultImages = [
     { src: medicineBottle1, alt: `${medicineName} bottle view 1`, label: "Front View" },
     { src: medicineBottle2, alt: `${medicineName} bottle view 2`, label: "Side View" },
     { src: medicineBottle3, alt: `${medicineName} bottle view 3`, label: "Back View" },
     { src: medicineBox1, alt: `${medicineName} packaging`, label: "Packaging" }
   ];
+
+  // Use GeniLiv-specific images when applicable
+  const images = medicineName.toLowerCase() === "geniliv" ? genilivImages : defaultImages;
 
   const nextImage = () => {
     setCurrentImageIndex((prev) => (prev + 1) % images.length);
