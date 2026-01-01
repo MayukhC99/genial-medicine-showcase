@@ -9,8 +9,8 @@ export default function HeroSection() {
       <div className="absolute inset-0 z-0">
         <img 
           src={heroImage} 
-          alt="Medical laboratory and research facility" 
-          className="w-full h-full object-cover opacity-20"
+          alt="Genial Healthcare veterinary and pharmaceutical products" 
+          className="w-full h-full object-cover opacity-40"
         />
         <div className="absolute inset-0 bg-gradient-hero" />
       </div>
