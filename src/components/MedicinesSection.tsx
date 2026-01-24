@@ -15,53 +15,94 @@ export default function MedicinesSection() {
     isPopular: true
   }];
   const veterinaryMedicines = [{
-    name: "GeniLiv",
-    category: "Liver Care",
-    description: "Advanced hepatoprotective formula designed to support liver function and promote hepatic regeneration.",
-    features: ["Supports liver detoxification", "Promotes hepatic cell regeneration", "Reduces oxidative stress", "Improves liver enzyme levels"],
+    name: "Genical-DS Gold",
+    category: "Calcium & Lactation",
+    description: "Double strength calcium, phosphorus and Vitamin AD3 with galactagogues for enhanced milk production and better health.",
+    features: ["Improves milk yield & health", "Enhances milk let-down", "Better growth, strong bones", "Butterfat in milk and SNF content"],
     isPopular: true
-  }, {
-    name: "GeniBoost",
-    category: "Immunity",
-    description: "Comprehensive immune system enhancer with powerful antioxidants and essential nutrients.",
-    features: ["Boosts natural immunity", "Rich in antioxidants", "Supports energy metabolism", "Enhances overall wellness"]
   }, {
     name: "Genical-DS",
-    category: "Bone Health",
-    description: "Dual-strength calcium supplement with Vitamin D3 for optimal bone health and calcium absorption.",
-    features: ["High bioavailable calcium", "Enhanced with Vitamin D3", "Supports bone density", "Prevents calcium deficiency"]
+    category: "Calcium Supplement",
+    description: "Double power liquid feed supplement with calcium, phosphorus and Vitamin AD3 for improved milk production and health.",
+    features: ["Increased milk production", "Better growth, strong bones", "Fulfills calcium & phosphorus needs", "Must for reproduction & lactation"]
+  }, {
+    name: "GeniBoost",
+    category: "Immunomodulator",
+    description: "Powerful immunomodulator that boosts and maintains immune system, reduces stress and prevents bacterial & viral outbreaks.",
+    features: ["Boosts & maintains immune system", "Reduces stress, maintains homeostasis", "Improves WBC activity & FCR", "Can be used with antibiotics"],
+    isPopular: true
+  }, {
+    name: "GeniLiv Vet",
+    category: "Liver Tonic",
+    description: "Powerful liver tonic for cattle & poultry that relieves anorexia, rejuvenates from hepatic problems and prevents fatty liver syndrome.",
+    features: ["Relieves anorexia", "Rejuvenates from hepatic problems", "Prevents fatty liver syndrome", "Co-therapy with antibiotics"]
+  }, {
+    name: "GeniMix Bolus",
+    category: "Probiotic & Enzyme",
+    description: "Accomplished mixture of prebiotic, probiotic, enzyme & growth stimulants for improved ruminal function and appetite.",
+    features: ["Prevents pathogenic bacteria", "Increases ruminal microflora", "Normalizes appetite in anorexia", "Helps prevent diarrhea"]
   }, {
     name: "GeniPlex",
-    category: "Multi-Vitamin",
-    description: "Complete multivitamin complex with essential minerals for comprehensive nutritional support.",
-    features: ["Complete vitamin profile", "Essential mineral blend", "Supports daily nutrition", "Enhances energy levels"],
+    category: "B-Complex",
+    description: "Complete B-complex rich in vitamins B1 and H for proper metabolism, nervous system function and energy conversion.",
+    features: ["Transforms stunted growth", "Eliminates anaemia & anorexia", "Boosts immunity", "Supports pregnancy nutrition"],
     isPopular: true
   }, {
-    name: "GeniWorm",
-    category: "Anti-Parasitic",
-    description: "Effective broad-spectrum anthelmintic for treatment and prevention of parasitic infections.",
-    features: ["Broad-spectrum efficacy", "Safe for all age groups", "Single-dose treatment", "Prevents reinfection"]
+    name: "GromiVit",
+    category: "Anti-Stress Vitamin",
+    description: "Optimal powerful concentration of anti-stress liquid vitamin feed supplement for cattle and poultry.",
+    features: ["Removes stress from vaccination/transport", "Builds body resistance to infection", "Improves growth & fertility", "Better egg & milk production"]
   }, {
-    name: "GeniZol-MT",
-    category: "Anti-Fungal",
-    description: "Advanced antifungal medication with enhanced bioavailability for effective fungal treatment.",
-    features: ["Rapid antifungal action", "Enhanced bioavailability", "Minimal side effects", "Effective against resistant strains"]
+    name: "GeniZole-NT Bolus",
+    category: "Anti-Bacterial/Protozoal",
+    description: "Unique combination for bacterial and protozoal infections including mixed gut infections, diarrhea and dysentery.",
+    features: ["Bacterial & protozoal infections", "Mixed gut infections & diarrhea", "Calf scour treatment", "Bovine coccidiosis & enteritis"]
   }, {
-    name: "GeniZol-CT",
-    category: "Combination Therapy",
-    description: "Synergistic combination therapy for comprehensive treatment of mixed infections.",
-    features: ["Dual-action formula", "Broad antimicrobial spectrum", "Reduced treatment duration", "Enhanced therapeutic efficacy"]
+    name: "GeniMol-Plus",
+    category: "Pain & Fever Relief",
+    description: "Highly effective in controlling fever, pain, inflammation and tissue swelling for systemic infections and musculoskeletal pain.",
+    features: ["Controls fever & inflammation", "Mastitis & metritis treatment", "Musculoskeletal pain relief", "Post-surgical pain management"]
   }, {
-    name: "Improcef",
+    name: "PMelogen Injection",
+    category: "NSAID Injection",
+    description: "Anti-inflammatory, analgesic & antipyretic injection that relieves fever, pain and inflammation in various conditions.",
+    features: ["Controls pyrexia", "Arthritis & osteoarthritis", "Mastitis & metritis", "Laminitis & pneumonia"]
+  }, {
+    name: "Improcef-S",
     category: "Antibiotic",
-    description: "Third-generation cephalosporin antibiotic for serious bacterial infections treatment.",
-    features: ["Broad-spectrum antibiotic", "Hospital-grade efficacy", "Excellent tissue penetration", "Low resistance development"]
-  }, {
-    name: "GeniFen",
-    category: "Pain Relief",
-    description: "Fast-acting analgesic and anti-inflammatory medication for effective pain management.",
-    features: ["Rapid pain relief", "Anti-inflammatory action", "Long-lasting effect", "Minimal gastric irritation"],
+    description: "Powerful combination of Ceftriaxone with Sulbactam for serious bacterial infections and surgical prophylaxis.",
+    features: ["Mastitis treatment", "Respiratory tract infections", "Septicaemia & meningitis", "Pre parturition & dystocia"],
     isPopular: true
+  }, {
+    name: "GeniMec",
+    category: "Anti-Parasitic",
+    description: "100% effective in killing both endo and ectoparasites, safe for pregnant animals throughout pregnancy.",
+    features: ["Kills endo & ectoparasites", "Safe for pregnant animals", "Prolonged activity", "Fewer treatments required"]
+  }, {
+    name: "GeniOrm",
+    category: "Anthelmintic",
+    description: "Highly effective, tasty and safe broad spectrum anthelmintic for roundworms, tapeworms, lungworms and adult liver flukes.",
+    features: ["Ovicidal & larvicidal", "Cysticidal & wormicidal", "Control all major worms", "Safe for all animals"]
+  }, {
+    name: "GeniFen Bolus",
+    category: "Anthelmintic",
+    description: "Broad-spectrum anthelmintic for gastrointestinal parasites with high safety margin and long-lasting action.",
+    features: ["Wormicidal & larvicidal", "Wide margin of safety", "Faster intestinal absorption", "Short milk residue period"]
+  }, {
+    name: "Floxenro",
+    category: "Antibacterial & Mucolytic",
+    description: "Distinctive combination of antibacterial and mucolytic for respiratory infections and Mycoplasma control.",
+    features: ["Rapid antibacterial activity", "Controls Mycoplasma", "Reduces respiratory complications", "Speedy recovery"]
+  }, {
+    name: "GeniZole-CT",
+    category: "Antibacterial/Antiprotozoal",
+    description: "Excellent combination of broad spectrum antibacterial and antiprotozoal for mixed infections in poultry.",
+    features: ["Broad spectrum antibacterial", "Treats all types of diarrhea", "E. coli & Salmonella", "Fowl cholera & coryza"]
+  }, {
+    name: "Improlexin",
+    category: "Water-Soluble Antibiotic",
+    description: "Broad-spectrum water-soluble powder antibiotic with low protein binding and fast action for poultry.",
+    features: ["Prevents early chick mortality", "Fast acting antibiotic", "Coryza & fowl typhoid", "Higher safety & efficacy"]
   }];
   return <section id="medicines" className="py-20 bg-gradient-subtle">
       <div className="max-w-7xl mx-auto px-6">
