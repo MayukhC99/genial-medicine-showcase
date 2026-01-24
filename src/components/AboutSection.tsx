@@ -9,16 +9,16 @@ export default function AboutSection() {
     description: "Rigorous quality control processes ensure every product meets the highest pharmaceutical standards."
   }, {
     icon: Microscope,
-    title: "Research Excellence",
-    description: "Continuous innovation through advanced research and development initiatives."
+    title: "Integrity & Ethics",
+    description: "We operate with transparency, honesty, and adherence to regulatory and ethical standards."
   }, {
     icon: HeartHandshake,
-    title: "Patient-Centric",
-    description: "Every decision we make prioritizes patient safety, efficacy, and accessibility."
+    title: "Customer Centric",
+    description: "Every decision we make prioritizes customer safety, efficacy, and accessibility."
   }, {
     icon: Globe,
-    title: "Global Reach",
-    description: "Serving healthcare providers and patients across multiple countries and regions."
+    title: "Scientific Excellence",
+    description: "Our products are driven by evidence-based research and continuous improvement."
   }];
   const achievements = [{
     icon: Award,
