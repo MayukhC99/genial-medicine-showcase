@@ -9,6 +9,12 @@ export default defineConfig(({ mode }) => ({
     host: "::",
     port: 8080,
   },
+  preview: {
+    host: true,
+    allowedHosts: [
+      'genial-healthcare.onrender.com'
+    ]
+  },
   plugins: [
     react(),
     mode === 'development' &&
