@@ -1,14 +1,14 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Award, Users, Globe, Shield, Microscope, HeartHandshake, Target, TrendingUp } from "lucide-react";
+import { Award, Users, Scale, Shield, Microscope, HeartHandshake, Target, TrendingUp } from "lucide-react";
 export default function AboutSection() {
   const values = [{
     icon: Shield,
     title: "Quality Assurance",
     description: "Rigorous quality control processes ensure every product meets the highest pharmaceutical standards."
   }, {
-    icon: Microscope,
+    icon: Scale,
     title: "Integrity & Ethics",
     description: "We operate with transparency, honesty, and adherence to regulatory and ethical standards."
   }, {
@@ -16,7 +16,7 @@ export default function AboutSection() {
     title: "Customer Centric",
     description: "Every decision we make prioritizes customer safety, efficacy, and accessibility."
   }, {
-    icon: Globe,
+    icon: Microscope,
     title: "Scientific Excellence",
     description: "Our products are driven by evidence-based research and continuous improvement."
   }];
