@@ -42,9 +42,6 @@ export default function Navigation() {
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-primary group-hover:w-full transition-all duration-300" />
               </a>
             ))}
-            <Button variant="medical" size="sm">
-              Get Started
-            </Button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -72,11 +69,6 @@ export default function Navigation() {
                   {item.label}
                 </a>
               ))}
-              <div className="px-4 pt-2">
-                <Button variant="medical" className="w-full">
-                  Get Started
-                </Button>
-              </div>
             </div>
           </div>
         )}
