@@ -4,7 +4,7 @@ import heroImage from "@/assets/medical-hero.jpg";
 
 export default function HeroSection() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-subtle">
+    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-subtle">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <img 
