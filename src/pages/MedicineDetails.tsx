@@ -353,13 +353,13 @@ export default function MedicineDetails() {
 
         {/* Detailed Information Tabs */}
         <div className="animate-fade-in">
-          <Tabs defaultValue="composition" className="w-full">
-            <TabsList className="grid w-full grid-cols-5 mb-8">
-              <TabsTrigger value="composition">Composition</TabsTrigger>
-              <TabsTrigger value="indications">Indications</TabsTrigger>
-              <TabsTrigger value="dosage">Dosage & Administration</TabsTrigger>
-              <TabsTrigger value="safety">Safety Profile</TabsTrigger>
-              <TabsTrigger value="storage">Storage & Handling</TabsTrigger>
+        <Tabs defaultValue="composition" className="w-full">
+            <TabsList className="flex flex-wrap justify-start gap-2 h-auto p-2 mb-8 md:grid md:grid-cols-5 md:gap-0">
+              <TabsTrigger value="composition" className="text-xs sm:text-sm whitespace-nowrap">Composition</TabsTrigger>
+              <TabsTrigger value="indications" className="text-xs sm:text-sm whitespace-nowrap">Indications</TabsTrigger>
+              <TabsTrigger value="dosage" className="text-xs sm:text-sm whitespace-nowrap">Dosage</TabsTrigger>
+              <TabsTrigger value="safety" className="text-xs sm:text-sm whitespace-nowrap">Safety</TabsTrigger>
+              <TabsTrigger value="storage" className="text-xs sm:text-sm whitespace-nowrap">Storage</TabsTrigger>
             </TabsList>
 
             <TabsContent value="composition" className="space-y-6">
