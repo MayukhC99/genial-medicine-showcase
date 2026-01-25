@@ -18,7 +18,6 @@ import {
   Download,
   Share2,
   Bookmark,
-  Star
 } from "lucide-react";
 
 export default function MedicineDetails() {
@@ -285,21 +284,6 @@ export default function MedicineDetails() {
                 <Badge variant="secondary" className="bg-primary/10 text-primary">
                   {medicine.category}
                 </Badge>
-                <div className="flex items-center gap-1">
-                  {[...Array(5)].map((_, i) => (
-                    <Star 
-                      key={i} 
-                      className={`h-4 w-4 ${
-                        i < Math.floor(medicine.rating) 
-                          ? 'text-yellow-400 fill-yellow-400' 
-                          : 'text-muted-foreground'
-                      }`} 
-                    />
-                  ))}
-                  <span className="text-sm text-muted-foreground ml-2">
-                    {medicine.rating} ({medicine.reviews} reviews)
-                  </span>
-                </div>
               </div>
               
               <h1 className="text-5xl font-bold mb-4 bg-gradient-primary bg-clip-text text-transparent">
@@ -311,23 +295,6 @@ export default function MedicineDetails() {
               </p>
             </div>
 
-            {/* Quick Stats */}
-            <div className="grid grid-cols-3 gap-4">
-              {[
-                { label: "Efficacy", value: medicine.clinicalData.efficacy, icon: Heart, color: "text-success" },
-                { label: "Safety", value: medicine.clinicalData.safety, icon: Shield, color: "text-primary" },
-                { label: "Satisfaction", value: medicine.clinicalData.patientSatisfaction, icon: Star, color: "text-accent" }
-              ].map((stat) => (
-                <Card key={stat.label} className="text-center hover:shadow-medical transition-all duration-300 hover:scale-105">
-                  <CardContent className="p-4">
-                    <stat.icon className={`h-6 w-6 mx-auto mb-2 ${stat.color}`} />
-                    <div className="text-2xl font-bold mb-1">{stat.value}%</div>
-                    <div className="text-xs text-muted-foreground">{stat.label}</div>
-                    <Progress value={stat.value} className="mt-2 h-1" />
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
 
             {/* Key Benefits */}
             <Card className="shadow-medical">
@@ -537,7 +504,7 @@ export default function MedicineDetails() {
               clinical studies, or any questions about {medicine.name}.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button variant="hero" size="lg">
+              <Button variant="hero" size="lg" onClick={() => navigate('/#contact')}>
                 Contact Medical Team
               </Button>
               <Button variant="outline" size="lg">
