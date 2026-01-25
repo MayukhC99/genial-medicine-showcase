@@ -1,11 +1,19 @@
-import { useParams, useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { Progress } from "@/components/ui/progress";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+} from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
 import MedicineImageGallery from "@/components/MedicineImageGallery";
 import { 
   ArrowLeft, 
@@ -17,12 +25,34 @@ import {
   Shield,
   Download,
   Share2,
-  Bookmark,
+  Copy,
+  Check,
 } from "lucide-react";
 
 export default function MedicineDetails() {
   const { medicineName } = useParams<{ medicineName: string }>();
   const navigate = useNavigate();
+  const location = useLocation();
+  const [shareDialogOpen, setShareDialogOpen] = useState(false);
+  const [copied, setCopied] = useState(false);
+  
+  const productUrl = `${window.location.origin}${location.pathname}`;
+  
+  const handleCopyLink = async () => {
+    await navigator.clipboard.writeText(productUrl);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+  
+  const handleContactClick = () => {
+    navigate('/');
+    setTimeout(() => {
+      const contactSection = document.getElementById('contact');
+      if (contactSection) {
+        contactSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    }, 100);
+  };
 
   // Scroll to top when component mounts
   useEffect(() => {
@@ -247,13 +277,9 @@ export default function MedicineDetails() {
             </Button>
             
             <div className="flex gap-2">
-              <Button variant="outline" size="sm">
+              <Button variant="outline" size="sm" onClick={() => setShareDialogOpen(true)}>
                 <Share2 className="h-4 w-4" />
                 Share
-              </Button>
-              <Button variant="outline" size="sm">
-                <Bookmark className="h-4 w-4" />
-                Save
               </Button>
               <Button variant="medical" size="sm">
                 <Download className="h-4 w-4" />
@@ -504,7 +530,7 @@ export default function MedicineDetails() {
               clinical studies, or any questions about {medicine.name}.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button variant="hero" size="lg" onClick={() => navigate('/#contact')}>
+              <Button variant="hero" size="lg" onClick={handleContactClick}>
                 Contact Medical Team
               </Button>
               <Button variant="outline" size="lg">
@@ -514,6 +540,38 @@ export default function MedicineDetails() {
           </CardContent>
         </Card>
       </div>
+
+      {/* Share Dialog */}
+      <Dialog open={shareDialogOpen} onOpenChange={setShareDialogOpen}>
+        <DialogContent className="sm:max-w-md">
+          <DialogHeader>
+            <DialogTitle>Share Product</DialogTitle>
+            <DialogDescription>
+              Copy the link below to share this medicine with others.
+            </DialogDescription>
+          </DialogHeader>
+          <div className="flex items-center gap-2">
+            <Input
+              readOnly
+              value={productUrl}
+              className="flex-1"
+            />
+            <Button onClick={handleCopyLink} variant="outline" className="shrink-0">
+              {copied ? (
+                <>
+                  <Check className="h-4 w-4 text-success" />
+                  Copied
+                </>
+              ) : (
+                <>
+                  <Copy className="h-4 w-4" />
+                  Copy
+                </>
+              )}
+            </Button>
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }
