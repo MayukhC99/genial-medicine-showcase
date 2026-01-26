@@ -1,6 +1,7 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { ChevronLeft, ChevronRight, ZoomIn } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Skeleton } from "@/components/ui/skeleton";
 import medicineBottle1 from "@/assets/medicine-bottle-1.jpg";
 import medicineBottle2 from "@/assets/medicine-bottle-2.jpg";
 import medicineBottle3 from "@/assets/medicine-bottle-3.jpg";
@@ -13,10 +14,31 @@ interface MedicineImageGalleryProps {
   color?: string;
 }
 
+// Image cache to store preloaded images
+const imageCache = new Map<string, HTMLImageElement>();
+
+const preloadImage = (src: string): Promise<void> => {
+  return new Promise((resolve, reject) => {
+    if (imageCache.has(src)) {
+      resolve();
+      return;
+    }
+    const img = new Image();
+    img.onload = () => {
+      imageCache.set(src, img);
+      resolve();
+    };
+    img.onerror = reject;
+    img.src = src;
+  });
+};
+
 export default function MedicineImageGallery({ medicineName }: MedicineImageGalleryProps) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isHovering, setIsHovering] = useState(false);
   const [zoomPosition, setZoomPosition] = useState({ x: 50, y: 50 });
+  const [loadedImages, setLoadedImages] = useState<Set<number>>(new Set());
+  const [isCurrentImageLoaded, setIsCurrentImageLoaded] = useState(false);
   const imageContainerRef = useRef<HTMLDivElement>(null);
 
   // Product-specific images
@@ -34,6 +56,20 @@ export default function MedicineImageGallery({ medicineName }: MedicineImageGall
 
   // Use GeniLiv-specific images when applicable
   const images = medicineName.toLowerCase() === "geniliv" ? genilivImages : defaultImages;
+
+  // Preload all images on mount
+  useEffect(() => {
+    images.forEach((image, index) => {
+      preloadImage(image.src).then(() => {
+        setLoadedImages(prev => new Set(prev).add(index));
+      });
+    });
+  }, [medicineName]);
+
+  // Check if current image is loaded
+  useEffect(() => {
+    setIsCurrentImageLoaded(loadedImages.has(currentImageIndex));
+  }, [currentImageIndex, loadedImages]);
 
   const nextImage = () => {
     setCurrentImageIndex((prev) => (prev + 1) % images.length);
@@ -78,14 +114,18 @@ export default function MedicineImageGallery({ medicineName }: MedicineImageGall
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
           >
-            <img
-              src={images[currentImageIndex].src}
-              alt={images[currentImageIndex].alt}
-              className="w-full h-full object-cover"
-            />
+            {!isCurrentImageLoaded ? (
+              <Skeleton className="w-full h-full" />
+            ) : (
+              <img
+                src={images[currentImageIndex].src}
+                alt={images[currentImageIndex].alt}
+                className="w-full h-full object-contain bg-muted/30"
+              />
+            )}
             
             {/* Hover Lens Indicator */}
-            {isHovering && (
+            {isHovering && isCurrentImageLoaded && (
               <div 
                 className="absolute w-24 h-24 border-2 border-primary/50 bg-primary/10 pointer-events-none rounded-sm"
                 style={{
@@ -143,13 +183,13 @@ export default function MedicineImageGallery({ medicineName }: MedicineImageGall
         </div>
 
         {/* Zoom Preview Panel (Amazon-style) */}
-        {isHovering && (
+        {isHovering && isCurrentImageLoaded && (
           <div className="hidden lg:block absolute left-[calc(100%+16px)] top-0 w-[400px] h-[400px] bg-background border border-border rounded-xl overflow-hidden shadow-xl z-50">
             <div 
               className="w-full h-full"
               style={{
                 backgroundImage: `url(${images[currentImageIndex].src})`,
-                backgroundSize: '250%',
+                backgroundSize: '200%',
                 backgroundPosition: `${zoomPosition.x}% ${zoomPosition.y}%`,
               }}
             />
@@ -169,11 +209,15 @@ export default function MedicineImageGallery({ medicineName }: MedicineImageGall
                 : 'border-border/50 hover:border-primary/50'
             }`}
           >
-            <img
-              src={image.src}
-              alt={image.alt}
-              className="w-full h-full object-cover"
-            />
+            {loadedImages.has(index) ? (
+              <img
+                src={image.src}
+                alt={image.alt}
+                className="w-full h-full object-contain bg-muted/30"
+              />
+            ) : (
+              <Skeleton className="w-full h-full" />
+            )}
             <div className={`absolute inset-0 transition-opacity ${
               index === currentImageIndex ? 'bg-primary/10' : 'bg-transparent hover:bg-primary/5'
             }`} />
