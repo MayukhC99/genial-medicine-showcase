@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { ChevronLeft, ChevronRight, ZoomIn } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import medicineBottle1 from "@/assets/medicine-bottle-1.jpg";
@@ -15,8 +15,9 @@ interface MedicineImageGalleryProps {
 
 export default function MedicineImageGallery({ medicineName }: MedicineImageGalleryProps) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [isZoomed, setIsZoomed] = useState(false);
-  const [zoomPosition, setZoomPosition] = useState({ x: 0, y: 0 });
+  const [isHovering, setIsHovering] = useState(false);
+  const [zoomPosition, setZoomPosition] = useState({ x: 50, y: 50 });
+  const imageContainerRef = useRef<HTMLDivElement>(null);
 
   // Product-specific images
   const genilivImages = [
@@ -47,97 +48,117 @@ export default function MedicineImageGallery({ medicineName }: MedicineImageGall
   };
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!isZoomed) return;
+    if (!imageContainerRef.current) return;
     
-    const rect = e.currentTarget.getBoundingClientRect();
+    const rect = imageContainerRef.current.getBoundingClientRect();
     const x = ((e.clientX - rect.left) / rect.width) * 100;
     const y = ((e.clientY - rect.top) / rect.height) * 100;
     
-    setZoomPosition({ x, y });
+    setZoomPosition({ x: Math.max(0, Math.min(100, x)), y: Math.max(0, Math.min(100, y)) });
   };
 
   const handleMouseEnter = () => {
-    setIsZoomed(true);
+    setIsHovering(true);
   };
 
   const handleMouseLeave = () => {
-    setIsZoomed(false);
+    setIsHovering(false);
   };
 
   return (
     <div className="space-y-4">
-      {/* Main Image Display */}
-      <div className="relative group">
-        <div 
-          className="relative aspect-square bg-gradient-card rounded-xl overflow-hidden border border-border/50 cursor-zoom-in"
-          onMouseMove={handleMouseMove}
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-        >
-          <img
-            src={images[currentImageIndex].src}
-            alt={images[currentImageIndex].alt}
-            className={`w-full h-full object-cover transition-transform duration-300 ${
-              isZoomed ? 'scale-150' : 'scale-100'
-            }`}
-            style={
-              isZoomed
-                ? {
-                    transformOrigin: `${zoomPosition.x}% ${zoomPosition.y}%`,
-                  }
-                : {}
-            }
-          />
-          
-          {/* Zoom Indicator */}
-          <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
-            <div className="bg-background/90 backdrop-blur-sm rounded-lg p-2 border border-border/50">
-              <ZoomIn className="h-4 w-4 text-muted-foreground" />
+      {/* Main Image Display with Zoom Preview */}
+      <div className="relative flex gap-4">
+        {/* Main Image Container */}
+        <div className="relative group flex-1">
+          <div 
+            ref={imageContainerRef}
+            className="relative aspect-square bg-gradient-card rounded-xl overflow-hidden border border-border/50 cursor-crosshair"
+            onMouseMove={handleMouseMove}
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+          >
+            <img
+              src={images[currentImageIndex].src}
+              alt={images[currentImageIndex].alt}
+              className="w-full h-full object-cover"
+            />
+            
+            {/* Hover Lens Indicator */}
+            {isHovering && (
+              <div 
+                className="absolute w-24 h-24 border-2 border-primary/50 bg-primary/10 pointer-events-none rounded-sm"
+                style={{
+                  left: `calc(${zoomPosition.x}% - 48px)`,
+                  top: `calc(${zoomPosition.y}% - 48px)`,
+                }}
+              />
+            )}
+            
+            {/* Zoom Indicator */}
+            <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
+              <div className="bg-background/90 backdrop-blur-sm rounded-lg p-2 border border-border/50">
+                <ZoomIn className="h-4 w-4 text-muted-foreground" />
+              </div>
+            </div>
+
+            {/* Navigation Arrows */}
+            {images.length > 1 && (
+              <>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className="absolute left-2 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity bg-background/90 backdrop-blur-sm hover:bg-background"
+                  onClick={prevImage}
+                >
+                  <ChevronLeft className="h-4 w-4" />
+                </Button>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className="absolute right-2 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity bg-background/90 backdrop-blur-sm hover:bg-background"
+                  onClick={nextImage}
+                >
+                  <ChevronRight className="h-4 w-4" />
+                </Button>
+              </>
+            )}
+
+            {/* Image Counter */}
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity">
+              <div className="bg-background/90 backdrop-blur-sm rounded-lg px-3 py-1 border border-border/50">
+                <span className="text-sm text-muted-foreground">
+                  {currentImageIndex + 1} / {images.length}
+                </span>
+              </div>
             </div>
           </div>
 
-          {/* Navigation Arrows */}
-          {images.length > 1 && (
-            <>
-              <Button
-                variant="ghost"
-                size="sm"
-                className="absolute left-2 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity bg-background/90 backdrop-blur-sm hover:bg-background"
-                onClick={prevImage}
-              >
-                <ChevronLeft className="h-4 w-4" />
-              </Button>
-              <Button
-                variant="ghost"
-                size="sm"
-                className="absolute right-2 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity bg-background/90 backdrop-blur-sm hover:bg-background"
-                onClick={nextImage}
-              >
-                <ChevronRight className="h-4 w-4" />
-              </Button>
-            </>
-          )}
-
-          {/* Image Counter */}
-          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity">
-            <div className="bg-background/90 backdrop-blur-sm rounded-lg px-3 py-1 border border-border/50">
-              <span className="text-sm text-muted-foreground">
-                {currentImageIndex + 1} / {images.length}
-              </span>
+          {/* Current Image Label */}
+          <div className="absolute -bottom-2 left-1/2 -translate-x-1/2">
+            <div className="bg-primary text-primary-foreground px-3 py-1 rounded-full text-xs font-medium">
+              {images[currentImageIndex].label}
             </div>
           </div>
         </div>
 
-        {/* Current Image Label */}
-        <div className="absolute -bottom-2 left-1/2 -translate-x-1/2">
-          <div className="bg-primary text-primary-foreground px-3 py-1 rounded-full text-xs font-medium">
-            {images[currentImageIndex].label}
+        {/* Zoom Preview Panel (Amazon-style) */}
+        {isHovering && (
+          <div className="hidden lg:block absolute left-[calc(100%+16px)] top-0 w-[400px] h-[400px] bg-background border border-border rounded-xl overflow-hidden shadow-xl z-50">
+            <div 
+              className="w-full h-full"
+              style={{
+                backgroundImage: `url(${images[currentImageIndex].src})`,
+                backgroundSize: '250%',
+                backgroundPosition: `${zoomPosition.x}% ${zoomPosition.y}%`,
+              }}
+            />
           </div>
-        </div>
+        )}
       </div>
 
       {/* Thumbnail Navigation */}
-      <div className="flex gap-2 justify-center">
+      <div className="flex gap-2 justify-center pt-4">
         {images.map((image, index) => (
           <button
             key={index}
@@ -163,7 +184,7 @@ export default function MedicineImageGallery({ medicineName }: MedicineImageGall
       {/* Interaction Tips */}
       <div className="text-center">
         <p className="text-xs text-muted-foreground">
-          🖱️ Hover to zoom • 👆 Click thumbnails to switch views
+          🖱️ Hover to see zoomed preview • 👆 Click thumbnails to switch views
         </p>
       </div>
     </div>
