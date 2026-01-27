@@ -197,7 +197,16 @@ export default function MedicinesSection() {
                 Download Complete Catalog
                 <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </Button>
-              <Button variant="outline" size="lg">
+              <Button 
+                variant="outline" 
+                size="lg"
+                onClick={() => {
+                  const contactSection = document.getElementById('contact');
+                  if (contactSection) {
+                    contactSection.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }}
+              >
                 Contact Medical Team
               </Button>
             </div>

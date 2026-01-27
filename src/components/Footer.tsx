@@ -68,22 +68,22 @@ export default function Footer() {
             </div>
             
             <p className="text-background/80 leading-relaxed mb-6">
-              Pioneering pharmaceutical excellence for over 25 years, delivering 
+              Pioneering pharmaceutical excellence for over 15 years, delivering 
               innovative medicines that transform lives and advance healthcare worldwide.
             </p>
             
             <div className="space-y-3">
               <div className="flex items-center gap-3 text-background/80">
                 <Mail className="h-4 w-4 text-primary" />
-                <span className="text-sm">info@genialhealthcare.com</span>
+                <span className="text-sm">genialhealthcare@gmail.com</span>
               </div>
               <div className="flex items-center gap-3 text-background/80">
                 <Phone className="h-4 w-4 text-primary" />
-                <span className="text-sm">+91 98765 43210</span>
+                <span className="text-sm">9433033466 | WhatsApp: 9123714025</span>
               </div>
               <div className="flex items-center gap-3 text-background/80">
                 <MapPin className="h-4 w-4 text-primary" />
-                <span className="text-sm">Medical District, Healthcare Plaza</span>
+                <span className="text-sm">ESER MINERAL COMPLEX, Kolkata - 700110</span>
               </div>
             </div>
           </div>
