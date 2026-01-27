@@ -22,7 +22,13 @@ export default function MedicineCard({
   const navigate = useNavigate();
 
   const handleViewDetails = () => {
-    const medicineSlug = name.toLowerCase().replace(/[\s-]+/g, '');
+    // Convert name to URL-friendly slug (lowercase, spaces/special chars to hyphens)
+    const medicineSlug = name
+      .toLowerCase()
+      .replace(/\s+/g, '-')           // spaces to hyphens
+      .replace(/[()]/g, '')           // remove parentheses
+      .replace(/-+/g, '-')            // collapse multiple hyphens
+      .replace(/^-|-$/g, '');         // trim leading/trailing hyphens
     navigate(`/medicine/${medicineSlug}`);
   };
 

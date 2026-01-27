@@ -4,11 +4,9 @@ import {
   Mail, 
   Phone, 
   MapPin,
-  ArrowUp,
-  Linkedin,
-  Twitter,
-  Facebook
+  ArrowUp
 } from "lucide-react";
+import { Link } from "react-router-dom";
 import genialLogo from "@/assets/genial-logo.jpeg";
 
 export default function Footer() {
@@ -27,21 +25,31 @@ export default function Footer() {
       ]
     },
     {
-      title: "Products",
+      title: "Human Healthcare",
       links: [
-        { label: "GeniLiv", href: "#medicines" },
-        { label: "GeniBoost", href: "#medicines" },
-        { label: "Genical-DS", href: "#medicines" },
-        { label: "GeniPlex", href: "#medicines" }
+        { label: "GeniLiv", href: "/medicine/geniliv" }
       ]
     },
     {
-      title: "Support",
+      title: "Veterinary Products",
       links: [
-        { label: "Product Information", href: "#" },
-        { label: "Safety Data", href: "#" },
-        { label: "Medical Inquiries", href: "#" },
-        { label: "Download Center", href: "#" }
+        { label: "Genical-DS Gold", href: "/medicine/genical-ds-gold" },
+        { label: "Genical-DS", href: "/medicine/genical-ds" },
+        { label: "GeniBoost", href: "/medicine/geniboost" },
+        { label: "GeniLiv Vet", href: "/medicine/geniliv-vet" },
+        { label: "GeniMix Bolus", href: "/medicine/genimix-bolus" },
+        { label: "GeniPlex", href: "/medicine/geniplex" },
+        { label: "GromiVit", href: "/medicine/gromivit" },
+        { label: "GeniZole-NT Bolus", href: "/medicine/genizole-nt-bolus" },
+        { label: "GeniMol-Plus", href: "/medicine/genimol-plus" },
+        { label: "PMelogen Injection", href: "/medicine/pmelogen-injection" },
+        { label: "Improcef-S", href: "/medicine/improcef-s" },
+        { label: "GeniMec", href: "/medicine/genimec" },
+        { label: "GeniOrm", href: "/medicine/geniorm" },
+        { label: "GeniFen Bolus", href: "/medicine/genifen-bolus" },
+        { label: "Floxenro", href: "/medicine/floxenro" },
+        { label: "GeniZole-CT", href: "/medicine/genizole-ct" },
+        { label: "Improlexin", href: "/medicine/improlexin" }
       ]
     }
   ];
@@ -99,16 +107,27 @@ export default function Footer() {
                 {section.title}
               </h3>
               <ul className="space-y-3">
-                {section.links.map((link, linkIndex) => (
+                {section.links.map((link) => (
                   <li key={link.label}>
-                    <a
-                      href={link.href}
-                      className="text-background/80 hover:text-primary transition-colors duration-300 text-sm flex items-center group"
-                    >
-                      <span className="group-hover:translate-x-1 transition-transform duration-300">
-                        {link.label}
-                      </span>
-                    </a>
+                    {link.href.startsWith('/') ? (
+                      <Link
+                        to={link.href}
+                        className="text-background/80 hover:text-primary transition-colors duration-300 text-sm flex items-center group"
+                      >
+                        <span className="group-hover:translate-x-1 transition-transform duration-300">
+                          {link.label}
+                        </span>
+                      </Link>
+                    ) : (
+                      <a
+                        href={link.href}
+                        className="text-background/80 hover:text-primary transition-colors duration-300 text-sm flex items-center group"
+                      >
+                        <span className="group-hover:translate-x-1 transition-transform duration-300">
+                          {link.label}
+                        </span>
+                      </a>
+                    )}
                   </li>
                 ))}
               </ul>
@@ -116,41 +135,17 @@ export default function Footer() {
           ))}
         </div>
 
-        {/* Social Links & Newsletter */}
-        <div className="mt-16 pt-8 border-t border-background/20">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-8">
-            {/* Social Media */}
-            <div className="flex items-center gap-4 animate-fade-in">
-              <span className="text-background/80 text-sm font-medium">Follow Us:</span>
-              <div className="flex gap-3">
-                {[
-                  { icon: Linkedin, href: "#" },
-                  { icon: Twitter, href: "#" },
-                  { icon: Facebook, href: "#" }
-                ].map((social, index) => (
-                  <Button
-                    key={index}
-                    variant="ghost"
-                    size="icon"
-                    className="h-10 w-10 rounded-full border border-background/20 hover:bg-primary hover:border-primary transition-all duration-300 hover:scale-110"
-                  >
-                    <social.icon className="h-4 w-4" />
-                  </Button>
-                ))}
-              </div>
-            </div>
-
-            {/* Back to Top */}
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={scrollToTop}
-              className="group bg-transparent border-background/20 text-background hover:bg-primary hover:border-primary hover:text-white animate-fade-in"
-            >
-              <ArrowUp className="h-4 w-4 group-hover:-translate-y-1 transition-transform duration-300" />
-              Back to Top
-            </Button>
-          </div>
+        {/* Back to Top */}
+        <div className="mt-16 pt-8 border-t border-background/20 flex justify-center">
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={scrollToTop}
+            className="group bg-transparent border-background/20 text-background hover:bg-primary hover:border-primary hover:text-white animate-fade-in"
+          >
+            <ArrowUp className="h-4 w-4 group-hover:-translate-y-1 transition-transform duration-300" />
+            Back to Top
+          </Button>
         </div>
       </div>
 
@@ -158,21 +153,10 @@ export default function Footer() {
       <Separator className="bg-background/20" />
       <div className="py-6">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-background/60">
+          <div className="text-center text-sm text-background/60">
             <p>
-              © 2024 Genial Health Care Pvt. Ltd. All rights reserved.
+              © 2013 Genial Health Care Pvt. Ltd. All rights reserved.
             </p>
-            <div className="flex gap-6">
-              <a href="#" className="hover:text-primary transition-colors duration-300">
-                Privacy Policy
-              </a>
-              <a href="#" className="hover:text-primary transition-colors duration-300">
-                Terms of Service
-              </a>
-              <a href="#" className="hover:text-primary transition-colors duration-300">
-                Medical Disclaimer
-              </a>
-            </div>
           </div>
         </div>
       </div>
