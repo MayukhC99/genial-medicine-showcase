@@ -61,13 +61,13 @@ export default function HeroSection() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16 animate-slide-in-right">
           <div className="text-center group">
             <div className="text-4xl font-bold text-primary mb-2 group-hover:scale-110 transition-transform duration-300">
-              25+
+              15+
             </div>
             <div className="text-muted-foreground">Years of Excellence</div>
           </div>
           <div className="text-center group">
             <div className="text-4xl font-bold text-accent mb-2 group-hover:scale-110 transition-transform duration-300">
-              50+
+              18
             </div>
             <div className="text-muted-foreground">Pharmaceutical Products</div>
           </div>

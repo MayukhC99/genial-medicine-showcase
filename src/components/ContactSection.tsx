@@ -12,20 +12,20 @@ export default function ContactSection() {
     {
       icon: MapPin,
       title: "Head Office",
-      details: "Medical District, Healthcare Plaza",
-      subDetails: "Innovation Tower, Floor 12-15"
+      details: "ESER MINERAL COMPLEX, MURAGACHA P.O. Jugberia",
+      subDetails: "Kolkata - 700110, West Bengal"
     },
     {
       icon: Phone,
       title: "Phone Numbers",
-      details: "+91 98765 43210",
-      subDetails: "+91 98765 43211 (Emergency)"
+      details: "Mobile: 9433033466",
+      subDetails: "WhatsApp: 9123714025"
     },
     {
       icon: Mail,
       title: "Email Address",
-      details: "info@genialhealthcare.com",
-      subDetails: "medical@genialhealthcare.com"
+      details: "genialhealthcare@gmail.com",
+      subDetails: ""
     },
     {
       icon: Clock,

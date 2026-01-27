@@ -22,8 +22,8 @@ export default function AboutSection() {
   }];
   const achievements = [{
     icon: Award,
-    number: "50+",
-    label: "Awards & Recognitions",
+    number: "18",
+    label: "Pharmaceutical Products",
     color: "text-primary"
   }, {
     icon: Users,
@@ -37,7 +37,7 @@ export default function AboutSection() {
     color: "text-success"
   }, {
     icon: TrendingUp,
-    number: "25+",
+    number: "15+",
     label: "Years of Excellence",
     color: "text-primary"
   }];
@@ -59,15 +59,11 @@ export default function AboutSection() {
             
             <p className="text-lg text-muted-foreground leading-relaxed mb-8">Genial Healthcare Pvt. Ltd. has been serving the healthcare and nutrition space for over 15 years, driven by a clear vision: to deliver reliable, high-quality medicines and nutrition solutions while creating lasting value for customers and employees alike.</p>
             
-            <p className="text-lg text-muted-foreground leading-relaxed mb-8">
+            <p className="text-lg text-muted-foreground leading-relaxed">
               Our commitment to excellence, combined with cutting-edge research and 
               manufacturing capabilities, has established us as a trusted partner for 
               healthcare professionals worldwide.
             </p>
-            
-            <Button variant="hero" size="lg">
-              Learn More About Us
-            </Button>
           </div>
           
           {/* Achievement Stats */}
