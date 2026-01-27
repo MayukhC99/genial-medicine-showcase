@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Separator } from "@/components/ui/separator";
 import { Progress } from "@/components/ui/progress";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
@@ -21,13 +20,13 @@ import {
   AlertTriangle, 
   Clock,
   Pill,
-  Heart,
   Shield,
   Download,
   Share2,
   Copy,
   Check,
 } from "lucide-react";
+import { getMedicineBySlug, MedicineData } from "@/data/medicineData";
 
 export default function MedicineDetails() {
   const { medicineName } = useParams<{ medicineName: string }>();
@@ -59,207 +58,25 @@ export default function MedicineDetails() {
     window.scrollTo(0, 0);
   }, [medicineName]);
 
-  // Mock medicine data - in real app, this would come from API/database
-  const medicineData: Record<string, any> = {
-    "geniliv": {
-      name: "GeniLiv",
-      category: "Liver Care",
-      color: "#16a34a",
-      rating: 4.8,
-      reviews: 234,
-      description: "Advanced hepatoprotective formula designed to support liver function and promote hepatic regeneration with scientifically proven ingredients.",
-      composition: [
-        { ingredient: "Silymarin", strength: "140mg", percentage: 35 },
-        { ingredient: "L-Ornithine L-Aspartate", strength: "250mg", percentage: 25 },
-        { ingredient: "Vitamin E", strength: "10mg", percentage: 15 },
-        { ingredient: "Zinc Sulfate", strength: "15mg", percentage: 10 },
-        { ingredient: "Other Excipients", strength: "Q.S.", percentage: 15 }
-      ],
-      indications: [
-        "Chronic hepatitis and liver cirrhosis",
-        "Alcoholic liver disease", 
-        "Drug-induced hepatotoxicity",
-        "Fatty liver disease (NAFLD)",
-        "Liver detoxification support"
-      ],
-      dosage: "One tablet twice daily with meals or as directed by physician",
-      sideEffects: [
-        { effect: "Mild gastrointestinal disturbance", severity: "low" },
-        { effect: "Allergic reactions (rare)", severity: "medium" },
-        { effect: "Headache", severity: "low" }
-      ],
-      contraindications: [
-        "Hypersensitivity to any component",
-        "Pregnancy and lactation (consult physician)",
-        "Children under 12 years"
-      ],
-      clinicalData: {
-        efficacy: 92,
-        safety: 96,
-        patientSatisfaction: 89
-      },
-      storage: "Store in a cool, dry place below 25°C. Keep away from direct sunlight.",
-      shelfLife: "36 months from date of manufacture"
-    },
-    "geniboost": {
-      name: "GeniBoost",
-      category: "Immunity",
-      color: "#dc2626",
-      rating: 4.6,
-      reviews: 189,
-      description: "Comprehensive immune system enhancer with powerful antioxidants and essential nutrients for optimal wellness.",
-      composition: [
-        { ingredient: "Vitamin C", strength: "500mg", percentage: 30 },
-        { ingredient: "Zinc Gluconate", strength: "15mg", percentage: 20 },
-        { ingredient: "Vitamin D3", strength: "1000IU", percentage: 15 },
-        { ingredient: "Elderberry Extract", strength: "200mg", percentage: 20 },
-        { ingredient: "Other Excipients", strength: "Q.S.", percentage: 15 }
-      ],
-      indications: [
-        "Immune system support",
-        "Recovery from infections",
-        "Seasonal wellness protection",
-        "Antioxidant support",
-        "Energy and vitality enhancement"
-      ],
-      dosage: "One tablet daily with breakfast or as directed by physician",
-      sideEffects: [
-        { effect: "Mild nausea", severity: "low" },
-        { effect: "Stomach upset", severity: "low" }
-      ],
-      contraindications: [
-        "Hypersensitivity to any component",
-        "Autoimmune disorders (consult physician)",
-        "Children under 6 years"
-      ],
-      clinicalData: {
-        efficacy: 88,
-        safety: 94,
-        patientSatisfaction: 91
-      },
-      storage: "Store in a cool, dry place below 30°C. Keep container tightly closed.",
-      shelfLife: "24 months from date of manufacture"
-    },
-    "genicalds": {
-      name: "Genical-DS",
-      category: "Bone Health", 
-      color: "#0ea5e9",
-      rating: 4.7,
-      reviews: 312,
-      description: "Dual-strength calcium supplement with Vitamin D3 for optimal bone health and enhanced calcium absorption.",
-      composition: [
-        { ingredient: "Calcium Carbonate", strength: "1000mg", percentage: 40 },
-        { ingredient: "Vitamin D3", strength: "800IU", percentage: 25 },
-        { ingredient: "Magnesium Oxide", strength: "100mg", percentage: 15 },
-        { ingredient: "Vitamin K2", strength: "50mcg", percentage: 10 },
-        { ingredient: "Other Excipients", strength: "Q.S.", percentage: 10 }
-      ],
-      indications: [
-        "Osteoporosis prevention and treatment",
-        "Calcium deficiency",
-        "Bone fracture healing support",
-        "Postmenopausal bone health",
-        "Growing children and adolescents"
-      ],
-      dosage: "One tablet twice daily with meals or as directed by physician",
-      sideEffects: [
-        { effect: "Constipation", severity: "low" },
-        { effect: "Bloating", severity: "low" },
-        { effect: "Gas formation", severity: "low" }
-      ],
-      contraindications: [
-        "Hypercalcemia",
-        "Kidney stones",
-        "Hypersensitivity to any component"
-      ],
-      clinicalData: {
-        efficacy: 90,
-        safety: 95,
-        patientSatisfaction: 87
-      },
-      storage: "Store in a cool, dry place below 25°C. Protect from moisture.",
-      shelfLife: "36 months from date of manufacture"
-    },
-    "geniplex": {
-      name: "GeniPlex",
-      category: "Multi-Vitamin",
-      color: "#7c3aed",
-      rating: 4.5,
-      reviews: 267,
-      description: "Complete multivitamin complex with essential minerals for comprehensive nutritional support and daily wellness.",
-      composition: [
-        { ingredient: "Vitamin Complex (A,B,C,D,E)", strength: "Various", percentage: 35 },
-        { ingredient: "Mineral Blend", strength: "Various", percentage: 25 },
-        { ingredient: "Antioxidant Complex", strength: "100mg", percentage: 20 },
-        { ingredient: "Omega-3 Fatty Acids", strength: "50mg", percentage: 10 },
-        { ingredient: "Other Excipients", strength: "Q.S.", percentage: 10 }
-      ],
-      indications: [
-        "Nutritional deficiency prevention",
-        "Daily wellness support",
-        "Energy and metabolism boost",
-        "Immune function support",
-        "Stress and fatigue management"
-      ],
-      dosage: "One capsule daily with breakfast or as directed by physician",
-      sideEffects: [
-        { effect: "Mild nausea", severity: "low" },
-        { effect: "Metallic taste", severity: "low" }
-      ],
-      contraindications: [
-        "Hypervitaminosis",
-        "Iron overload disorders",
-        "Hypersensitivity to any component"
-      ],
-      clinicalData: {
-        efficacy: 85,
-        safety: 97,
-        patientSatisfaction: 89
-      },
-      storage: "Store in a cool, dry place below 25°C. Keep away from children.",
-      shelfLife: "24 months from date of manufacture"
-    },
-    "geniworm": {
-      name: "GeniWorm",
-      category: "Anti-Parasitic",
-      color: "#ea580c",
-      rating: 4.9,
-      reviews: 156,
-      description: "Effective broad-spectrum anthelmintic for treatment and prevention of parasitic worm infections.",
-      composition: [
-        { ingredient: "Albendazole", strength: "400mg", percentage: 80 },
-        { ingredient: "Microcrystalline Cellulose", strength: "Q.S.", percentage: 15 },
-        { ingredient: "Other Excipients", strength: "Q.S.", percentage: 5 }
-      ],
-      indications: [
-        "Roundworm infections",
-        "Hookworm infections", 
-        "Whipworm infections",
-        "Pinworm infections",
-        "Parasitic prevention"
-      ],
-      dosage: "Single dose of 400mg or as directed by physician",
-      sideEffects: [
-        { effect: "Abdominal pain", severity: "low" },
-        { effect: "Diarrhea", severity: "low" },
-        { effect: "Nausea", severity: "medium" }
-      ],
-      contraindications: [
-        "Pregnancy (first trimester)",
-        "Hypersensitivity to benzimidazoles",
-        "Children under 2 years"
-      ],
-      clinicalData: {
-        efficacy: 96,
-        safety: 93,
-        patientSatisfification: 94
-      },
-      storage: "Store in a cool, dry place below 30°C. Protect from light.",
-      shelfLife: "60 months from date of manufacture"
-    }
-  };
-
-  const medicine = medicineData[medicineName?.toLowerCase() || "geniliv"] || medicineData.geniliv;
+  // Get medicine data from centralized data file
+  const medicine: MedicineData | undefined = getMedicineBySlug(medicineName?.toLowerCase() || "geniliv");
+  
+  // If medicine not found, redirect to home
+  if (!medicine) {
+    return (
+      <div className="min-h-screen bg-gradient-subtle flex items-center justify-center">
+        <Card className="shadow-medical max-w-md">
+          <CardContent className="p-8 text-center">
+            <h2 className="text-2xl font-bold mb-4">Product Not Found</h2>
+            <p className="text-muted-foreground mb-6">
+              The medicine you're looking for doesn't exist.
+            </p>
+            <Button onClick={() => navigate('/')}>Go Back Home</Button>
+          </CardContent>
+        </Card>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gradient-subtle">
