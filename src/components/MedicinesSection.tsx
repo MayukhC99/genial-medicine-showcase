@@ -12,7 +12,8 @@ export default function MedicinesSection() {
     category: "Liver Care",
     description: "Advanced hepatoprotective formula designed to support liver function and promote hepatic regeneration.",
     features: ["Supports liver detoxification", "Promotes hepatic cell regeneration", "Reduces oxidative stress", "Improves liver enzyme levels"],
-    isPopular: true
+    isPopular: true,
+    pdfUrl: "/pdfs/geniliv-brochure.pdf"
   }];
   const veterinaryMedicines = [{
     name: "Genical-DS Gold",

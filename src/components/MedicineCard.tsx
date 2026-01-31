@@ -1,7 +1,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Pill, CheckCircle, Info } from "lucide-react";
+import { Pill, CheckCircle, Info, Download } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 interface MedicineCardProps {
@@ -10,6 +10,7 @@ interface MedicineCardProps {
   description: string;
   features: string[];
   isPopular?: boolean;
+  pdfUrl?: string;
 }
 
 export default function MedicineCard({ 
@@ -17,7 +18,8 @@ export default function MedicineCard({
   category, 
   description, 
   features, 
-  isPopular = false 
+  isPopular = false,
+  pdfUrl
 }: MedicineCardProps) {
   const navigate = useNavigate();
 
@@ -30,6 +32,17 @@ export default function MedicineCard({
       .replace(/-+/g, '-')            // collapse multiple hyphens
       .replace(/^-|-$/g, '');         // trim leading/trailing hyphens
     navigate(`/medicine/${medicineSlug}`);
+  };
+
+  const handleDownloadPDF = () => {
+    if (pdfUrl) {
+      const link = document.createElement('a');
+      link.href = pdfUrl;
+      link.download = `${name}-brochure.pdf`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
   };
 
   return (
@@ -91,8 +104,11 @@ export default function MedicineCard({
           <Button 
             variant="outline" 
             size="sm"
-            className="relative overflow-hidden group/pdf before:absolute before:inset-0 before:bg-primary before:origin-left before:scale-x-0 hover:before:scale-x-100 before:transition-transform before:duration-300 before:ease-out hover:text-primary-foreground hover:border-primary transition-colors duration-300"
+            onClick={handleDownloadPDF}
+            disabled={!pdfUrl}
+            className="relative overflow-hidden group/pdf before:absolute before:inset-0 before:bg-primary before:origin-left before:scale-x-0 hover:before:scale-x-100 before:transition-transform before:duration-300 before:ease-out hover:text-primary-foreground hover:border-primary transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:before:scale-x-0"
           >
+            <Download className="h-4 w-4 relative z-10" />
             <span className="relative z-10">Download PDF</span>
           </Button>
         </div>
