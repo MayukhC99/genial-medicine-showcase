@@ -91,8 +91,9 @@ export default function MedicineCard({
           <Button 
             variant="outline" 
             size="sm"
+            className="relative overflow-hidden group/pdf before:absolute before:inset-0 before:bg-primary before:origin-left before:scale-x-0 hover:before:scale-x-100 before:transition-transform before:duration-300 before:ease-out hover:text-primary-foreground hover:border-primary transition-colors duration-300"
           >
-            Download PDF
+            <span className="relative z-10">Download PDF</span>
           </Button>
         </div>
       </CardContent>
