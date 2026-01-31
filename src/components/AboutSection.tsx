@@ -22,12 +22,12 @@ export default function AboutSection() {
   }];
   const achievements = [{
     icon: Award,
-    number: "18",
+    number: "35+",
     label: "Pharmaceutical Products",
     color: "text-primary"
   }, {
     icon: Users,
-    number: "1000+",
+    number: "500+",
     label: "Healthcare Partners",
     color: "text-accent"
   }, {

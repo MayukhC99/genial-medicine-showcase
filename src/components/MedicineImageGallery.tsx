@@ -44,7 +44,7 @@ export default function MedicineImageGallery({ medicineName }: MedicineImageGall
   // Product-specific images
   const genilivImages = [
     { src: genilivBottleBox, alt: "GeniLiv bottle with packaging", label: "Product View" },
-    { src: genilivBox, alt: "GeniLiv packaging box", label: "Packaging" }
+    { src: genilivBox, alt: "Geniliv packaging box", label: "Packaging" }
   ];
 
   const defaultImages = [
@@ -54,7 +54,7 @@ export default function MedicineImageGallery({ medicineName }: MedicineImageGall
     { src: medicineBox1, alt: `${medicineName} packaging`, label: "Packaging" }
   ];
 
-  // Use GeniLiv-specific images when applicable
+  // Use Geniliv-specific images when applicable
   const images = medicineName.toLowerCase() === "geniliv" ? genilivImages : defaultImages;
 
   // Preload all images on mount

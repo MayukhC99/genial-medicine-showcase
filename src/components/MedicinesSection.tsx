@@ -1,5 +1,6 @@
 import MedicineCard from "@/components/MedicineCard";
 import { Button } from "@/components/ui/button";
+import { pbkdf2 } from "crypto";
 import { ArrowRight, Sparkles, User, PawPrint, ChevronDown } from "lucide-react";
 import { useState } from "react";
 export default function MedicinesSection() {
@@ -8,7 +9,7 @@ export default function MedicinesSection() {
     setExpandedSection(expandedSection === section ? null : section);
   };
   const humanMedicines = [{
-    name: "GeniLiv",
+    name: "Geniliv",
     category: "Liver Care",
     description: "Advanced hepatoprotective formula designed to support liver function and promote hepatic regeneration.",
     features: ["Supports liver detoxification", "Promotes hepatic cell regeneration", "Reduces oxidative stress", "Improves liver enzyme levels"],
@@ -18,92 +19,109 @@ export default function MedicinesSection() {
   const veterinaryMedicines = [{
     name: "Genical-DS Gold",
     category: "Calcium & Lactation",
-    description: "Double strength calcium, phosphorus and Vitamin AD3 with galactagogues for enhanced milk production and better health.",
+    description: "Double strength of calcium, phosphorus and Vitamin AD3 with galactagogues for enhanced milk production and better health.",
     features: ["Improves milk yield & health", "Enhances milk let-down", "Better growth, strong bones", "Butterfat in milk and SNF content"],
-    isPopular: true
+    isPopular: true,
+    pdfUrl: "/pdfs/genical-ds-gold-brochure.pdf"
   }, {
     name: "Genical-DS",
     category: "Calcium Supplement",
     description: "Double power liquid feed supplement with calcium, phosphorus and Vitamin AD3 for improved milk production and health.",
-    features: ["Increased milk production", "Better growth, strong bones", "Fulfills calcium & phosphorus needs", "Must for reproduction & lactation"]
+    features: ["Increased milk production", "Better growth, strong bones", "Fulfills calcium & phosphorus needs", "Must for reproduction & lactation"],
+    pdfUrl: "/pdfs/genical-ds-brochure.pdf"
   }, {
-    name: "GeniBoost",
+    name: "Geniboost",
     category: "Immunomodulator",
     description: "Powerful immunomodulator that boosts and maintains immune system, reduces stress and prevents bacterial & viral outbreaks.",
     features: ["Boosts & maintains immune system", "Reduces stress, maintains homeostasis", "Improves WBC activity & FCR", "Can be used with antibiotics"],
-    isPopular: true
+    isPopular: true,
+    pdfUrl: "/pdfs/geniboost-brochure.pdf"
   }, {
-    name: "GeniLiv Vet",
+    name: "Geniliv Vet",
     category: "Liver Tonic",
     description: "Powerful liver tonic for cattle & poultry that relieves anorexia, rejuvenates from hepatic problems and prevents fatty liver syndrome.",
-    features: ["Relieves anorexia", "Rejuvenates from hepatic problems", "Prevents fatty liver syndrome", "Co-therapy with antibiotics"]
+    features: ["Relieves anorexia", "Rejuvenates from hepatic problems", "Prevents fatty liver syndrome", "Co-therapy with antibiotics"],
+    pdfUrl: "/pdfs/geniliv-vet-brochure.pdf"
   }, {
-    name: "GeniMix Bolus",
+    name: "Genimix Bolus",
     category: "Probiotic & Enzyme",
     description: "Accomplished mixture of prebiotic, probiotic, enzyme & growth stimulants for improved ruminal function and appetite.",
-    features: ["Prevents pathogenic bacteria", "Increases ruminal microflora", "Normalizes appetite in anorexia", "Helps prevent diarrhea"]
+    features: ["Prevents pathogenic bacteria", "Increases ruminal microflora", "Normalizes appetite in anorexia", "Helps prevent diarrhea"],
+    pdfUrl: "/pdfs/genimix-bolus-brochure.pdf"
   }, {
-    name: "GeniPlex",
+    name: "Geniplex",
     category: "B-Complex",
     description: "Complete B-complex rich in vitamins B1 and H for proper metabolism, nervous system function and energy conversion.",
     features: ["Transforms stunted growth", "Eliminates anaemia & anorexia", "Boosts immunity", "Supports pregnancy nutrition"],
-    isPopular: true
+    isPopular: true,
+    pdfUrl: "/pdfs/geniplex-brochure.pdf"
   }, {
-    name: "GromiVit",
+    name: "Gromivit",
     category: "Anti-Stress Vitamin",
     description: "Optimal powerful concentration of anti-stress liquid vitamin feed supplement for cattle and poultry.",
-    features: ["Removes stress from vaccination/transport", "Builds body resistance to infection", "Improves growth & fertility", "Better egg & milk production"]
+    features: ["Removes stress from vaccination/transport", "Builds body resistance to infection", "Improves growth & fertility", "Better egg & milk production"],
+    pdfUrl: "/pdfs/gromivit-brochure.pdf"
   }, {
-    name: "GeniZole-NT Bolus",
+    name: "Genizole-NT Bolus",
     category: "Anti-Bacterial/Protozoal",
     description: "Unique combination for bacterial and protozoal infections including mixed gut infections, diarrhea and dysentery.",
-    features: ["Bacterial & protozoal infections", "Mixed gut infections & diarrhea", "Calf scour treatment", "Bovine coccidiosis & enteritis"]
+    features: ["Bacterial & protozoal infections", "Mixed gut infections & diarrhea", "Calf scour treatment", "Bovine coccidiosis & enteritis"],
+    pdfUrl: "/pdfs/genizole-nt-bolus-brochure.pdf"
   }, {
-    name: "GeniMol-Plus",
+    name: "Genimol-Plus",
     category: "Pain & Fever Relief",
     description: "Highly effective in controlling fever, pain, inflammation and tissue swelling for systemic infections and musculoskeletal pain.",
-    features: ["Controls fever & inflammation", "Mastitis & metritis treatment", "Musculoskeletal pain relief", "Post-surgical pain management"]
+    features: ["Controls fever & inflammation", "Mastitis & metritis treatment", "Musculoskeletal pain relief", "Post-surgical pain management"],
+    pdfUrl: "/pdfs/genimol-plus-brochure.pdf"
   }, {
-    name: "PMelogen Injection",
+    name: "Pmelogen Injection",
     category: "NSAID Injection",
     description: "Anti-inflammatory, analgesic & antipyretic injection that relieves fever, pain and inflammation in various conditions.",
-    features: ["Controls pyrexia", "Arthritis & osteoarthritis", "Mastitis & metritis", "Laminitis & pneumonia"]
+    features: ["Controls pyrexia", "Arthritis & osteoarthritis", "Mastitis & metritis", "Laminitis & pneumonia"],
+    pbdfUrl: "/pdfs/pmelogen-injection-brochure.pdf"
   }, {
     name: "Improcef-S",
     category: "Antibiotic",
     description: "Powerful combination of Ceftriaxone with Sulbactam for serious bacterial infections and surgical prophylaxis.",
     features: ["Mastitis treatment", "Respiratory tract infections", "Septicaemia & meningitis", "Pre parturition & dystocia"],
-    isPopular: true
+    isPopular: true,
+    pdfUrl: "/pdfs/improcef-s-brochure.pdf"
   }, {
-    name: "GeniMec",
+    name: "Genimec",
     category: "Anti-Parasitic",
     description: "100% effective in killing both endo and ectoparasites, safe for pregnant animals throughout pregnancy.",
-    features: ["Kills endo & ectoparasites", "Safe for pregnant animals", "Prolonged activity", "Fewer treatments required"]
+    features: ["Kills endo & ectoparasites", "Safe for pregnant animals", "Prolonged activity", "Fewer treatments required"],
+    pdfUrl: "/pdfs/genimec-brochure.pdf"
   }, {
-    name: "GeniOrm",
+    name: "Geniorm",
     category: "Anthelmintic",
     description: "Highly effective, tasty and safe broad spectrum anthelmintic for roundworms, tapeworms, lungworms and adult liver flukes.",
-    features: ["Ovicidal & larvicidal", "Cysticidal & wormicidal", "Control all major worms", "Safe for all animals"]
+    features: ["Ovicidal & larvicidal", "Cysticidal & wormicidal", "Control all major worms", "Safe for all animals"],
+    pdfUrl: "/pdfs/geniorm-brochure.pdf"
   }, {
-    name: "GeniFen Bolus",
+    name: "Genifen Bolus",
     category: "Anthelmintic",
     description: "Broad-spectrum anthelmintic for gastrointestinal parasites with high safety margin and long-lasting action.",
-    features: ["Wormicidal & larvicidal", "Wide margin of safety", "Faster intestinal absorption", "Short milk residue period"]
+    features: ["Wormicidal & larvicidal", "Wide margin of safety", "Faster intestinal absorption", "Short milk residue period"],
+    pdfUrl: "/pdfs/genifen-bolus-brochure.pdf"
   }, {
     name: "Floxenro",
     category: "Antibacterial & Mucolytic",
     description: "Distinctive combination of antibacterial and mucolytic for respiratory infections and Mycoplasma control.",
-    features: ["Rapid antibacterial activity", "Controls Mycoplasma", "Reduces respiratory complications", "Speedy recovery"]
+    features: ["Rapid antibacterial activity", "Controls Mycoplasma", "Reduces respiratory complications", "Speedy recovery"],
+    pdfUrl: "/pdfs/floxenro-brochure.pdf"
   }, {
-    name: "GeniZole-CT",
+    name: "Genizole-CT",
     category: "Antibacterial/Antiprotozoal",
     description: "Excellent combination of broad spectrum antibacterial and antiprotozoal for mixed infections in poultry.",
-    features: ["Broad spectrum antibacterial", "Treats all types of diarrhea", "E. coli & Salmonella", "Fowl cholera & coryza"]
+    features: ["Broad spectrum antibacterial", "Treats all types of diarrhea", "E. coli & Salmonella", "Fowl cholera & coryza"],
+    pdfUrl: "/pdfs/genizole-ct-brochure.pdf"
   }, {
     name: "Improlexin",
     category: "Water-Soluble Antibiotic",
     description: "Broad-spectrum water-soluble powder antibiotic with low protein binding and fast action for poultry.",
-    features: ["Prevents early chick mortality", "Fast acting antibiotic", "Coryza & fowl typhoid", "Higher safety & efficacy"]
+    features: ["Prevents early chick mortality", "Fast acting antibiotic", "Coryza & fowl typhoid", "Higher safety & efficacy"],
+    pdfUrl: "/pdfs/improlexin-brochure.pdf"
   }];
   return <section id="medicines" className="py-20 bg-gradient-subtle">
       <div className="max-w-7xl mx-auto px-6">

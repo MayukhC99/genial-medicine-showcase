@@ -22,23 +22,23 @@ export default function Footer() {
   ];
 
   const productLinks = [
-    { label: "GeniLiv", href: "/medicine/geniliv" },
+    { label: "Geniliv", href: "/medicine/geniliv" },
     { label: "Genical-DS Gold", href: "/medicine/genical-ds-gold" },
     { label: "Genical-DS", href: "/medicine/genical-ds" },
-    { label: "GeniBoost", href: "/medicine/geniboost" },
-    { label: "GeniLiv Vet", href: "/medicine/geniliv-vet" },
-    { label: "GeniMix Bolus", href: "/medicine/genimix-bolus" },
-    { label: "GeniPlex", href: "/medicine/geniplex" },
-    { label: "GromiVit", href: "/medicine/gromivit" },
-    { label: "GeniZole-NT Bolus", href: "/medicine/genizole-nt-bolus" },
-    { label: "GeniMol-Plus", href: "/medicine/genimol-plus" },
-    { label: "PMelogen Injection", href: "/medicine/pmelogen-injection" },
+    { label: "Geniboost", href: "/medicine/geniboost" },
+    { label: "Geniliv Vet", href: "/medicine/geniliv-vet" },
+    { label: "Genimix Bolus", href: "/medicine/genimix-bolus" },
+    { label: "Geniplex", href: "/medicine/geniplex" },
+    { label: "Gromivit", href: "/medicine/gromivit" },
+    { label: "Genizole-NT Bolus", href: "/medicine/genizole-nt-bolus" },
+    { label: "Genimol-Plus", href: "/medicine/genimol-plus" },
+    { label: "Pmelogen Injection", href: "/medicine/pmelogen-injection" },
     { label: "Improcef-S", href: "/medicine/improcef-s" },
-    { label: "GeniMec", href: "/medicine/genimec" },
-    { label: "GeniOrm", href: "/medicine/geniorm" },
-    { label: "GeniFen Bolus", href: "/medicine/genifen-bolus" },
+    { label: "Genimec", href: "/medicine/genimec" },
+    { label: "Geniorm", href: "/medicine/geniorm" },
+    { label: "Genifen Bolus", href: "/medicine/genifen-bolus" },
     { label: "Floxenro", href: "/medicine/floxenro" },
-    { label: "GeniZole-CT", href: "/medicine/genizole-ct" },
+    { label: "Genizole-CT", href: "/medicine/genizole-ct" },
     { label: "Improlexin", href: "/medicine/improlexin" }
   ];
 

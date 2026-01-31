@@ -76,7 +76,7 @@ export default function HeroSection() {
           </div>
           <div className="text-center group">
             <div className="text-4xl font-bold text-accent mb-2 group-hover:scale-110 transition-transform duration-300">
-              18
+              35+
             </div>
             <div className="text-muted-foreground">Pharmaceutical Products</div>
           </div>

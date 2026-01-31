@@ -28,6 +28,17 @@ import {
 } from "lucide-react";
 import { getMedicineBySlug, MedicineData } from "@/data/medicineData";
 
+interface CompositionItem {
+  ingredient: string;
+  strength: string;
+  percentage: number;
+}
+
+interface SideEffectItem {
+  effect: string;
+  severity: 'low' | 'medium' | 'high';
+}
+
 export default function MedicineDetails() {
   const { medicineName } = useParams<{ medicineName: string }>();
   const navigate = useNavigate();
@@ -194,7 +205,7 @@ export default function MedicineDetails() {
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-4">
-                    {medicine.composition.map((comp: any, index: number) => (
+                    {medicine.composition.map((comp: CompositionItem, index: number) => (
                       <div key={index} className="flex items-center justify-between p-4 rounded-lg bg-gradient-card border border-border/50">
                         <div className="flex-1">
                           <div className="font-semibold text-foreground">{comp.ingredient}</div>
@@ -248,7 +259,6 @@ export default function MedicineDetails() {
                       <div>
                         <h5 className="font-medium mb-3 text-foreground">Administration Guidelines:</h5>
                         <ul className="space-y-2 text-sm text-muted-foreground">
-                          <li>• Take with food to reduce gastric irritation</li>
                           <li>• Maintain consistent timing for optimal results</li>
                           <li>• Complete the full course as prescribed</li>
                           <li>• Do not exceed recommended dosage</li>
@@ -280,7 +290,7 @@ export default function MedicineDetails() {
                   </CardHeader>
                   <CardContent>
                     <div className="space-y-3">
-                      {medicine.sideEffects.map((effect: any, index: number) => (
+                      {medicine.sideEffects.map((effect: SideEffectItem, index: number) => (
                         <div key={index} className="flex items-start gap-3 p-3 rounded-lg bg-gradient-card border border-border/50">
                           <div className={`w-3 h-3 rounded-full mt-1 flex-shrink-0 ${
                             effect.severity === 'low' ? 'bg-green-400' :

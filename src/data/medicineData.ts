@@ -4,7 +4,7 @@ export interface MedicineData {
   color: string;
   type: "human" | "veterinary";
   description: string;
-  composition: { ingredient: string; strength: string; percentage: number }[];
+  composition: { ingredient: string; strength?: string; percentage: number }[];
   indications: string[];
   dosage: string;
   sideEffects: { effect: string; severity: "low" | "medium" | "high" }[];
@@ -17,7 +17,7 @@ export interface MedicineData {
 export const medicineData: Record<string, MedicineData> = {
   // Human Healthcare
   "geniliv": {
-    name: "GeniLiv",
+    name: "Geniliv",
     category: "Liver Care",
     color: "#16a34a",
     type: "human",
@@ -55,7 +55,7 @@ export const medicineData: Record<string, MedicineData> = {
     category: "Calcium & Lactation",
     color: "#f59e0b",
     type: "veterinary",
-    description: "Double strength calcium, phosphorus and Vitamin AD3 with galactagogues for enhanced milk production and better health.",
+    description: "Double strength of calcium, phosphorus and Vitamin AD3 with galactagogues for enhanced milk production and better health.",
     composition: [
       { ingredient: "Calcium", strength: "High concentration", percentage: 35 },
       { ingredient: "Phosphorus", strength: "Balanced ratio", percentage: 25 },
@@ -77,7 +77,8 @@ export const medicineData: Record<string, MedicineData> = {
       "Use as directed by veterinarian"
     ],
     storage: "Store in a cool, dry place. Keep container tightly closed.",
-    shelfLife: "As mentioned on pack"
+    shelfLife: "As mentioned on pack",
+    pdfUrl: "/pdfs/genical-ds-gold-brochure.pdf"
   },
 
   "genical-ds": {
@@ -107,21 +108,26 @@ export const medicineData: Record<string, MedicineData> = {
       "Use as directed by veterinarian"
     ],
     storage: "Store in a cool, dry place below 25°C.",
-    shelfLife: "As mentioned on pack"
+    shelfLife: "As mentioned on pack",
+    pdfUrl: "/pdfs/genical-ds-brochure.pdf"
   },
 
   "geniboost": {
-    name: "GeniBoost",
+    name: "Geniboost",
     category: "Immunomodulator",
     color: "#dc2626",
     type: "veterinary",
     description: "Powerful immunomodulator that boosts and maintains immune system, reduces stress and prevents bacterial & viral outbreaks.",
     composition: [
-      { ingredient: "Immunomodulating agents", strength: "Active blend", percentage: 40 },
-      { ingredient: "Stress-reducing compounds", strength: "Balanced", percentage: 25 },
-      { ingredient: "Vitamins", strength: "Fortified", percentage: 20 },
-      { ingredient: "Minerals", strength: "Essential", percentage: 10 },
-      { ingredient: "Other Excipients", strength: "Q.S.", percentage: 5 }
+      { ingredient: "Glycine", percentage: 25.25 },
+      { ingredient: "Vitamin E", percentage: 6.82 },
+      { ingredient: "Selenium", percentage: 0.003 },
+      { ingredient: "Vitamin C", percentage: 5.30 },
+      { ingredient: "Sodium Chloride", percentage: 3.28 },
+      { ingredient: "Potassium Chloride", percentage: 2.53 },
+      { ingredient: "Manganese Sulphate", percentage: 1.26 },
+      { ingredient: "Yeast Extract", percentage: 5.05 },
+      { ingredient: "Amino Nitrogen", percentage: 50.50 }
     ],
     indications: [
       "Boosts & maintains immune system",
@@ -137,11 +143,12 @@ export const medicineData: Record<string, MedicineData> = {
       "Use as directed by veterinarian"
     ],
     storage: "Store in a cool, dry place. Protect from light.",
-    shelfLife: "As mentioned on pack"
+    shelfLife: "As mentioned on pack",
+    pdfUrl: "/pdfs/geniboost-brochure.pdf"
   },
 
   "geniliv-vet": {
-    name: "GeniLiv Vet",
+    name: "Geniliv Vet",
     category: "Liver Tonic",
     color: "#16a34a",
     type: "veterinary",
@@ -167,11 +174,12 @@ export const medicineData: Record<string, MedicineData> = {
       "Use as directed by veterinarian"
     ],
     storage: "Store in a cool, dry place below 25°C.",
-    shelfLife: "As mentioned on pack"
+    shelfLife: "As mentioned on pack",
+    pdfUrl: "/pdfs/geniliv-vet-brochure.pdf"
   },
 
   "genimix-bolus": {
-    name: "GeniMix Bolus",
+    name: "Genimix Bolus",
     category: "Probiotic & Enzyme",
     color: "#8b5cf6",
     type: "veterinary",
@@ -197,11 +205,12 @@ export const medicineData: Record<string, MedicineData> = {
       "Use as directed by veterinarian"
     ],
     storage: "Store in a cool, dry place. Keep away from moisture.",
-    shelfLife: "As mentioned on pack"
+    shelfLife: "As mentioned on pack",
+    pdfUrl: "/pdfs/genimix-bolus-brochure.pdf"
   },
 
   "geniplex": {
-    name: "GeniPlex",
+    name: "Geniplex",
     category: "B-Complex",
     color: "#7c3aed",
     type: "veterinary",
@@ -227,11 +236,12 @@ export const medicineData: Record<string, MedicineData> = {
       "Use as directed by veterinarian"
     ],
     storage: "Store in a cool, dry place below 25°C.",
-    shelfLife: "As mentioned on pack"
+    shelfLife: "As mentioned on pack",
+    pdfUrl: "/pdfs/geniplex-brochure.pdf"
   },
 
   "gromivit": {
-    name: "GromiVit",
+    name: "Gromivit",
     category: "Anti-Stress Vitamin",
     color: "#06b6d4",
     type: "veterinary",
@@ -257,11 +267,12 @@ export const medicineData: Record<string, MedicineData> = {
       "Use as directed by veterinarian"
     ],
     storage: "Store in a cool, dry place. Protect from light.",
-    shelfLife: "As mentioned on pack"
+    shelfLife: "As mentioned on pack",
+    pdfUrl: "/pdfs/gromivit-brochure.pdf"
   },
 
   "genizole-nt-bolus": {
-    name: "GeniZole-NT Bolus",
+    name: "Genizole-NT Bolus",
     category: "Anti-Bacterial/Protozoal",
     color: "#ef4444",
     type: "veterinary",
@@ -287,11 +298,12 @@ export const medicineData: Record<string, MedicineData> = {
       "Not for use in animals producing milk for human consumption during treatment"
     ],
     storage: "Store in a cool, dry place below 25°C.",
-    shelfLife: "As mentioned on pack"
+    shelfLife: "As mentioned on pack",
+    pdfUrl: "/pdfs/genizole-nt-bolus-brochure.pdf"
   },
 
   "genimol-plus": {
-    name: "GeniMol-Plus",
+    name: "Genimol-Plus",
     category: "Pain & Fever Relief",
     color: "#f97316",
     type: "veterinary",
@@ -317,11 +329,12 @@ export const medicineData: Record<string, MedicineData> = {
       "Avoid in animals with kidney issues"
     ],
     storage: "Store in a cool, dry place. Protect from light.",
-    shelfLife: "As mentioned on pack"
+    shelfLife: "As mentioned on pack",
+    pdfUrl: "/pdfs/genimol-plus-brochure.pdf"
   },
 
   "pmelogen-injection": {
-    name: "PMelogen Injection",
+    name: "Pmelogen Injection",
     category: "NSAID Injection",
     color: "#ec4899",
     type: "veterinary",
@@ -347,7 +360,8 @@ export const medicineData: Record<string, MedicineData> = {
       "Avoid in dehydrated animals"
     ],
     storage: "Store in a cool, dry place. Protect from light and freezing.",
-    shelfLife: "As mentioned on pack"
+    shelfLife: "As mentioned on pack",
+    pdfUrl: "/pdfs/pmelogen-injection-brochure.pdf"
   },
 
   "improcef-s": {
@@ -377,11 +391,12 @@ export const medicineData: Record<string, MedicineData> = {
       "Use as directed by veterinarian"
     ],
     storage: "Store below 25°C. Protect from light.",
-    shelfLife: "As mentioned on pack"
+    shelfLife: "As mentioned on pack",
+    pdfUrl: "/pdfs/improcef-s-brochure.pdf"
   },
 
   "genimec": {
-    name: "GeniMec",
+    name: "Genimec",
     category: "Anti-Parasitic",
     color: "#84cc16",
     type: "veterinary",
@@ -406,11 +421,12 @@ export const medicineData: Record<string, MedicineData> = {
       "Use as directed by veterinarian"
     ],
     storage: "Store in a cool, dry place. Protect from light.",
-    shelfLife: "As mentioned on pack"
+    shelfLife: "As mentioned on pack",
+    pdfUrl: "/pdfs/genimec-brochure.pdf"
   },
 
   "geniorm": {
-    name: "GeniOrm",
+    name: "Geniorm",
     category: "Anthelmintic",
     color: "#22c55e",
     type: "veterinary",
@@ -435,11 +451,12 @@ export const medicineData: Record<string, MedicineData> = {
       "Use as directed by veterinarian"
     ],
     storage: "Store in a cool, dry place below 25°C.",
-    shelfLife: "As mentioned on pack"
+    shelfLife: "As mentioned on pack",
+    pdfUrl: "/pdfs/geniorm-brochure.pdf"
   },
 
   "genifen-bolus": {
-    name: "GeniFen Bolus",
+    name: "Genifen Bolus",
     category: "Anthelmintic",
     color: "#14b8a6",
     type: "veterinary",
@@ -464,7 +481,8 @@ export const medicineData: Record<string, MedicineData> = {
       "Use as directed by veterinarian"
     ],
     storage: "Store in a cool, dry place below 25°C.",
-    shelfLife: "As mentioned on pack"
+    shelfLife: "As mentioned on pack",
+    pdfUrl: "/pdfs/genifen-bolus-brochure.pdf"
   },
 
   "floxenro": {
@@ -494,11 +512,12 @@ export const medicineData: Record<string, MedicineData> = {
       "Not recommended for very young animals"
     ],
     storage: "Store in a cool, dry place. Protect from light.",
-    shelfLife: "As mentioned on pack"
+    shelfLife: "As mentioned on pack",
+    pdfUrl: "/pdfs/floxenro-brochure.pdf"
   },
 
   "genizole-ct": {
-    name: "GeniZole-CT",
+    name: "Genizole-CT",
     category: "Antibacterial/Antiprotozoal",
     color: "#f43f5e",
     type: "veterinary",
@@ -524,7 +543,8 @@ export const medicineData: Record<string, MedicineData> = {
       "Observe withdrawal period before slaughter"
     ],
     storage: "Store in a cool, dry place below 25°C.",
-    shelfLife: "As mentioned on pack"
+    shelfLife: "As mentioned on pack",
+    pdfUrl: "/pdfs/genizole-ct-brochure.pdf"
   },
 
   "improlexin": {
@@ -554,7 +574,8 @@ export const medicineData: Record<string, MedicineData> = {
       "Observe withdrawal period"
     ],
     storage: "Store in a cool, dry place. Keep container tightly closed.",
-    shelfLife: "As mentioned on pack"
+    shelfLife: "As mentioned on pack",
+    pdfUrl: "/pdfs/improlexin-brochure.pdf"
   }
 };
 
