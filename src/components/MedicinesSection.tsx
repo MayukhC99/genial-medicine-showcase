@@ -127,8 +127,8 @@ export default function MedicinesSection() {
         {/* Category Cards */}
         <div className="space-y-6 mb-16">
           {/* Human Healthcare Category */}
-          <div className="rounded-2xl border border-border/50 bg-gradient-card shadow-medical overflow-hidden">
-            <button onClick={() => toggleSection('human')} className="w-full flex items-center justify-between p-6 hover:bg-primary/5 transition-colors duration-300 group">
+          <div className="rounded-2xl border border-border/50 bg-gradient-card shadow-medical overflow-hidden relative z-20">
+            <button onClick={() => toggleSection('human')} className="w-full flex items-center justify-between p-6 hover:bg-primary/5 transition-colors duration-300 group relative z-10 bg-gradient-card">
               <div className="flex items-center gap-4">
                 <div className="p-4 rounded-xl bg-primary/10 border border-primary/20 group-hover:bg-primary/20 transition-colors duration-300">
                   <User className="h-8 w-8 text-primary" />
@@ -143,7 +143,7 @@ export default function MedicinesSection() {
             
             <div className={`grid transition-all duration-500 ease-out ${expandedSection === 'human' ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}>
               <div className="overflow-hidden">
-                <div className="p-6 pt-0 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div className="p-6 pt-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pb-8">
                   {humanMedicines.map((medicine, index) => <div key={medicine.name} className={`transition-all duration-500 ${expandedSection === 'human' ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`} style={{
                   transitionDelay: expandedSection === 'human' ? `${index * 100}ms` : '0ms'
                 }}>
@@ -155,8 +155,8 @@ export default function MedicinesSection() {
           </div>
 
           {/* Veterinary Healthcare Category */}
-          <div className="rounded-2xl border border-border/50 bg-gradient-card shadow-medical overflow-hidden">
-            <button onClick={() => toggleSection('veterinary')} className="w-full flex items-center justify-between p-6 hover:bg-accent/5 transition-colors duration-300 group">
+          <div className="rounded-2xl border border-border/50 bg-gradient-card shadow-medical overflow-hidden relative z-10">
+            <button onClick={() => toggleSection('veterinary')} className="w-full flex items-center justify-between p-6 hover:bg-accent/5 transition-colors duration-300 group relative z-10 bg-gradient-card">
               <div className="flex items-center gap-4">
                 <div className="p-4 rounded-xl bg-accent/10 border border-accent/20 group-hover:bg-accent/20 transition-colors duration-300">
                   <PawPrint className="h-8 w-8 text-accent" />
@@ -171,7 +171,7 @@ export default function MedicinesSection() {
             
             <div className={`grid transition-all duration-500 ease-out ${expandedSection === 'veterinary' ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}>
               <div className="overflow-hidden">
-                <div className="p-6 pt-0 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div className="p-6 pt-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pb-8">
                   {veterinaryMedicines.map((medicine, index) => <div key={`vet-${medicine.name}`} className={`transition-all duration-500 ${expandedSection === 'veterinary' ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`} style={{
                   transitionDelay: expandedSection === 'veterinary' ? `${index * 100}ms` : '0ms'
                 }}>

@@ -33,7 +33,7 @@ export default function MedicineCard({
   };
 
   return (
-    <Card className="group relative bg-gradient-card border-border/50 hover:shadow-medical transition-all duration-500 hover:scale-105 transform overflow-hidden animate-fade-in">
+    <Card className="group relative bg-gradient-card border-border/50 hover:shadow-medical transition-all duration-500 hover:-translate-y-2 transform overflow-hidden animate-fade-in">
       {/* Glow effect on hover */}
       <div className="absolute inset-0 bg-gradient-primary opacity-0 group-hover:opacity-10 transition-opacity duration-500 rounded-lg" />
       
