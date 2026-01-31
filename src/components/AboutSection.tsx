@@ -127,11 +127,7 @@ export default function AboutSection() {
           <h3 className="text-4xl font-bold mb-6 text-foreground">
             Our Mission
           </h3>
-          <p className="text-xl text-muted-foreground leading-relaxed max-w-4xl mx-auto">
-            "To develop, manufacture, and deliver innovative pharmaceutical solutions that 
-            enhance patient care, improve quality of life, and contribute to the advancement 
-            of global healthcare through excellence, integrity, and compassion."
-          </p>
+          <p className="text-xl text-muted-foreground leading-relaxed max-w-4xl mx-auto">"To develop, manufacture, and deliver innovative pharmaceutical solutions that enhance health care, improve quality of life, and contribute to the advancement of global healthcare through excellence, integrity, and compassion."</p>
         </div>
       </div>
     </section>;
