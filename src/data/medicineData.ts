@@ -11,6 +11,7 @@ export interface MedicineData {
   contraindications: string[];
   storage: string;
   shelfLife: string;
+  pdfUrl?: string;
 }
 
 export const medicineData: Record<string, MedicineData> = {
@@ -44,7 +45,8 @@ export const medicineData: Record<string, MedicineData> = {
       "Pregnancy and lactation (consult physician)"
     ],
     storage: "Store in a cool, dry place below 25°C. Keep away from direct sunlight.",
-    shelfLife: "As mentioned on pack"
+    shelfLife: "As mentioned on pack",
+    pdfUrl: "/pdfs/geniliv-brochure.pdf"
   },
 
   // Veterinary Healthcare

@@ -98,7 +98,22 @@ export default function MedicineDetails() {
                 <Share2 className="h-4 w-4" />
                 Share
               </Button>
-              <Button variant="medical" size="sm">
+              <Button 
+                variant="medical" 
+                size="sm"
+                onClick={() => {
+                  if (medicine.pdfUrl) {
+                    const link = document.createElement('a');
+                    link.href = medicine.pdfUrl;
+                    link.download = `${medicine.name}-brochure.pdf`;
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                  }
+                }}
+                disabled={!medicine.pdfUrl}
+                className="disabled:opacity-50 disabled:cursor-not-allowed"
+              >
                 <Download className="h-4 w-4" />
                 Download PDF
               </Button>
