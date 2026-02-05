@@ -1,6 +1,5 @@
 import MedicineCard from "@/components/MedicineCard";
 import { Button } from "@/components/ui/button";
-import { pbkdf2 } from "crypto";
 import { ArrowRight, Sparkles, User, PawPrint, ChevronDown } from "lucide-react";
 import { useState } from "react";
 export default function MedicinesSection() {
@@ -78,7 +77,7 @@ export default function MedicinesSection() {
     category: "NSAID Injection",
     description: "Anti-inflammatory, analgesic & antipyretic injection that relieves fever, pain and inflammation in various conditions.",
     features: ["Controls pyrexia", "Arthritis & osteoarthritis", "Mastitis & metritis", "Laminitis & pneumonia"],
-    pbdfUrl: "/pdfs/pmelogen-injection-brochure.pdf"
+    pdfUrl: "/pdfs/pmelogen-injection-brochure.pdf"
   }, {
     name: "Improcef-S",
     category: "Antibiotic",
