@@ -10,9 +10,9 @@ export default function MedicinesSection() {
   };
   const humanMedicines = [{
     name: "Geniliv",
-    category: "Liver Care",
-    description: "Advanced hepatoprotective formula designed to support liver function and promote hepatic regeneration.",
-    features: ["Supports liver detoxification", "Promotes hepatic cell regeneration", "Reduces oxidative stress", "Improves liver enzyme levels"],
+    category: "Complete Liver Care",
+    description: "A synergistic triple-strength formula to detoxify the liver from alcohol, drugs, and pollutants.",
+    features: ["Fatty and Chronic liver disease", "Liver damage caused by alcohol, toxins", "Hepatoprotective, antioxidant", "Fatigue, poor appetite, and indigestion"],
     isPopular: true,
     pdfUrl: "/pdfs/geniliv-brochure.pdf"
   }];

@@ -18,22 +18,22 @@ export const medicineData: Record<string, MedicineData> = {
   // Human Healthcare
   "geniliv": {
     name: "Geniliv",
-    category: "Liver Care",
+    category: "Complete Liver Care",
     color: "#16a34a",
     type: "human",
-    description: "Advanced hepatoprotective formula designed to support liver function and promote hepatic regeneration.",
+    description: "A synergistic triple-strength formula to detoxify the liver from alcohol, drugs, and pollutants.",
     composition: [
-      { ingredient: "Silymarin", strength: "140mg", percentage: 35 },
-      { ingredient: "L-Ornithine L-Aspartate", strength: "250mg", percentage: 25 },
+      { ingredient: "Silymarin", strength: "35mg", percentage: 0.7 },
+      { ingredient: "Lecithin", strength: "125mg", percentage: 2.5 },
       { ingredient: "Vitamin E", strength: "10mg", percentage: 15 },
       { ingredient: "Zinc Sulfate", strength: "15mg", percentage: 10 },
       { ingredient: "Other Excipients", strength: "Q.S.", percentage: 15 }
     ],
     indications: [
-      "Supports liver detoxification",
-      "Promotes hepatic cell regeneration",
-      "Reduces oxidative stress",
-      "Improves liver enzyme levels"
+      "Fatty and Chronic liver disease",
+      "Liver damage caused by alcohol, toxins",
+      "Hepatoprotective, antioxidant",
+      "Fatigue, poor appetite, and indigestion"
     ],
     dosage: "As directed by physician",
     sideEffects: [
@@ -44,7 +44,7 @@ export const medicineData: Record<string, MedicineData> = {
       "Hypersensitivity to any component",
       "Pregnancy and lactation (consult physician)"
     ],
-    storage: "Store in a cool, dry place below 25°C. Keep away from direct sunlight.",
+    storage: "Store in a cool, dry place below 30°C. Keep away from direct sunlight.",
     shelfLife: "As mentioned on pack",
     pdfUrl: "/pdfs/geniliv-brochure.pdf"
   },
