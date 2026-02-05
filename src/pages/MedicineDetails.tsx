@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Progress } from "@/components/ui/progress";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   Dialog,
@@ -14,6 +13,8 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import MedicineImageGallery from "@/components/MedicineImageGallery";
+import { CompositionCard } from "@/components/medicine-details/CompositionCard";
+import { DosageCard } from "@/components/medicine-details/DosageCard";
 import { 
   ArrowLeft, 
   CheckCircle, 
@@ -27,12 +28,6 @@ import {
   Check,
 } from "lucide-react";
 import { getMedicineBySlug, MedicineData } from "@/data/medicineData";
-
-interface CompositionItem {
-  ingredient: string;
-  strength: string;
-  percentage: number;
-}
 
 interface SideEffectItem {
   effect: string;
@@ -199,27 +194,10 @@ export default function MedicineDetails() {
             </TabsList>
 
             <TabsContent value="composition" className="space-y-6">
-              <Card className="shadow-medical">
-                <CardHeader>
-                  <CardTitle>Active & Inactive Ingredients</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-4">
-                    {medicine.composition.map((comp: CompositionItem, index: number) => (
-                      <div key={index} className="flex items-center justify-between p-4 rounded-lg bg-gradient-card border border-border/50">
-                        <div className="flex-1">
-                          <div className="font-semibold text-foreground">{comp.ingredient}</div>
-                          <div className="text-sm text-muted-foreground">{comp.strength}</div>
-                        </div>
-                        <div className="flex items-center gap-4">
-                          <Progress value={comp.percentage} className="w-20 h-2" />
-                          <span className="text-sm font-medium w-12 text-right">{comp.percentage}%</span>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
+              <CompositionCard 
+                servingSize={medicine.servingSize} 
+                composition={medicine.composition} 
+              />
             </TabsContent>
 
             <TabsContent value="indications" className="space-y-6">
@@ -241,42 +219,7 @@ export default function MedicineDetails() {
             </TabsContent>
 
             <TabsContent value="dosage" className="space-y-6">
-              <Card className="shadow-medical">
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <Clock className="h-5 w-5 text-primary" />
-                    Dosage & Administration
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="bg-gradient-card rounded-lg p-6 border border-border/50">
-                    <h4 className="font-semibold text-lg mb-4 text-foreground">Recommended Dosage</h4>
-                    <p className="text-muted-foreground text-lg leading-relaxed mb-6">
-                      {medicine.dosage}
-                    </p>
-                    
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <div>
-                        <h5 className="font-medium mb-3 text-foreground">Administration Guidelines:</h5>
-                        <ul className="space-y-2 text-sm text-muted-foreground">
-                          <li>• Maintain consistent timing for optimal results</li>
-                          <li>• Complete the full course as prescribed</li>
-                          <li>• Do not exceed recommended dosage</li>
-                        </ul>
-                      </div>
-                      <div>
-                        <h5 className="font-medium mb-3 text-foreground">Special Populations:</h5>
-                        <ul className="space-y-2 text-sm text-muted-foreground">
-                          <li>• Elderly: No dose adjustment required</li>
-                          <li>• Renal impairment: Consult physician</li>
-                          <li>• Hepatic impairment: Use with caution</li>
-                          <li>• Pediatric: Not recommended under 12 years</li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
+              <DosageCard dosage={medicine.dosage} />
             </TabsContent>
 
             <TabsContent value="safety" className="space-y-6">
