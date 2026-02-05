@@ -8,7 +8,7 @@ import {
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import genialLogo from "@/assets/genial-logo.jpeg";
-
+import { getYearsOfExcellence } from "@/hooks/useCountUp";
 export default function Footer() {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -64,7 +64,7 @@ export default function Footer() {
             </div>
             
             <p className="text-background/80 leading-relaxed mb-4 text-sm">
-              Pioneering pharmaceutical excellence for over 15 years, delivering 
+              Pioneering pharmaceutical excellence for over {getYearsOfExcellence()} years, delivering 
               innovative medicines that transform lives.
             </p>
             
