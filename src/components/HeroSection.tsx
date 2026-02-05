@@ -1,8 +1,24 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Stethoscope, Award, Users } from "lucide-react";
 import heroImage from "@/assets/medical-hero.jpg";
+import { useCountUp, getYearsOfExcellence } from "@/hooks/useCountUp";
+
+function AnimatedStat({ end, suffix = "", label, colorClass }: { end: number; suffix?: string; label: string; colorClass: string }) {
+  const { count, ref } = useCountUp({ end, duration: 2000 });
+  
+  return (
+    <div ref={ref} className="text-center group">
+      <div className={`text-4xl font-bold ${colorClass} mb-2 group-hover:scale-110 transition-transform duration-300`}>
+        {count}{suffix}
+      </div>
+      <div className="text-muted-foreground">{label}</div>
+    </div>
+  );
+}
 
 export default function HeroSection() {
+  const yearsOfExcellence = getYearsOfExcellence();
+
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-subtle pt-20 md:pt-16">
       {/* Background Image with Overlay */}
@@ -68,24 +84,9 @@ export default function HeroSection() {
         
         {/* Stats */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16 animate-slide-in-right">
-          <div className="text-center group">
-            <div className="text-4xl font-bold text-primary mb-2 group-hover:scale-110 transition-transform duration-300">
-              15+
-            </div>
-            <div className="text-muted-foreground">Years of Excellence</div>
-          </div>
-          <div className="text-center group">
-            <div className="text-4xl font-bold text-accent mb-2 group-hover:scale-110 transition-transform duration-300">
-              35+
-            </div>
-            <div className="text-muted-foreground">Pharmaceutical Products</div>
-          </div>
-          <div className="text-center group">
-            <div className="text-4xl font-bold text-success mb-2 group-hover:scale-110 transition-transform duration-300">
-              1M+
-            </div>
-            <div className="text-muted-foreground">Lives Improved</div>
-          </div>
+          <AnimatedStat end={yearsOfExcellence} suffix="+" label="Years of Excellence" colorClass="text-primary" />
+          <AnimatedStat end={35} suffix="+" label="Pharmaceutical Products" colorClass="text-accent" />
+          <AnimatedStat end={1} suffix="M+" label="Lives Improved" colorClass="text-success" />
         </div>
       </div>
     </section>
