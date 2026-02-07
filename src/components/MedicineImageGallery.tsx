@@ -2,16 +2,38 @@ import { useState, useRef, useEffect } from "react";
 import { ChevronLeft, ChevronRight, ZoomIn } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
+
+// Default images
 import medicineBottle1 from "@/assets/medicine-bottle-1.jpg";
 import medicineBottle2 from "@/assets/medicine-bottle-2.jpg";
 import medicineBottle3 from "@/assets/medicine-bottle-3.jpg";
 import medicineBox1 from "@/assets/medicine-box-1.jpg";
+
+// Human GeniLiv images
 import genilivBottleBox from "@/assets/geniliv-bottle-box.jpg";
 import genilivBox from "@/assets/geniliv-box.jpg";
+
+// Veterinary product images
+import genicalDsGold from "@/assets/products/genical-ds-gold.jpeg";
+import genicalDs from "@/assets/products/genical-ds.jpeg";
+import genifenBolus from "@/assets/products/genifen-bolus.jpeg";
+import genilivVet from "@/assets/products/geniliv-vet.jpeg";
+import genimec1 from "@/assets/products/genimec-1.jpeg";
+import genimec2 from "@/assets/products/genimec-2.jpeg";
+import genimixBolus from "@/assets/products/genimix-bolus.jpeg";
+import genimolPlus from "@/assets/products/genimol-plus.jpeg";
+import geniorm1 from "@/assets/products/geniorm-1.jpeg";
+import geniorm2 from "@/assets/products/geniorm-2.jpeg";
 
 interface MedicineImageGalleryProps {
   medicineName: string;
   color?: string;
+}
+
+interface GalleryImage {
+  src: string;
+  alt: string;
+  label: string;
 }
 
 // Image cache to store preloaded images
@@ -33,6 +55,40 @@ const preloadImage = (src: string): Promise<void> => {
   });
 };
 
+// Product-specific image configurations
+const productImages: Record<string, GalleryImage[]> = {
+  "geniliv": [
+    { src: genilivBottleBox, alt: "GeniLiv bottle with packaging", label: "Product View" },
+    { src: genilivBox, alt: "GeniLiv packaging box", label: "Packaging" }
+  ],
+  "genical-ds gold": [
+    { src: genicalDsGold, alt: "Genical-DS Gold bottle", label: "Product View" }
+  ],
+  "genical-ds": [
+    { src: genicalDs, alt: "Genical-DS bottle", label: "Product View" }
+  ],
+  "genifen bolus": [
+    { src: genifenBolus, alt: "GeniFen Bolus box with tablets", label: "Product View" }
+  ],
+  "geniliv vet": [
+    { src: genilivVet, alt: "GeniLiv Vet product range", label: "Product Range" }
+  ],
+  "genimec": [
+    { src: genimec1, alt: "Genimec product range", label: "Product Range" },
+    { src: genimec2, alt: "Genimec injection with box", label: "Injection" }
+  ],
+  "genimix bolus": [
+    { src: genimixBolus, alt: "GeniMix Bolus box with tablets", label: "Product View" }
+  ],
+  "genimol plus": [
+    { src: genimolPlus, alt: "GeniMol Plus box", label: "Product View" }
+  ],
+  "geniorm": [
+    { src: geniorm1, alt: "GeniOrm box with blister strips", label: "With Strips" },
+    { src: geniorm2, alt: "GeniOrm packaging box", label: "Packaging" }
+  ],
+};
+
 export default function MedicineImageGallery({ medicineName }: MedicineImageGalleryProps) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isHovering, setIsHovering] = useState(false);
@@ -41,24 +97,22 @@ export default function MedicineImageGallery({ medicineName }: MedicineImageGall
   const [isCurrentImageLoaded, setIsCurrentImageLoaded] = useState(false);
   const imageContainerRef = useRef<HTMLDivElement>(null);
 
-  // Product-specific images
-  const genilivImages = [
-    { src: genilivBottleBox, alt: "GeniLiv bottle with packaging", label: "Product View" },
-    { src: genilivBox, alt: "Geniliv packaging box", label: "Packaging" }
-  ];
-
-  const defaultImages = [
+  const defaultImages: GalleryImage[] = [
     { src: medicineBottle1, alt: `${medicineName} bottle view 1`, label: "Front View" },
     { src: medicineBottle2, alt: `${medicineName} bottle view 2`, label: "Side View" },
     { src: medicineBottle3, alt: `${medicineName} bottle view 3`, label: "Back View" },
     { src: medicineBox1, alt: `${medicineName} packaging`, label: "Packaging" }
   ];
 
-  // Use Geniliv-specific images when applicable
-  const images = medicineName.toLowerCase() === "geniliv" ? genilivImages : defaultImages;
+  // Get product-specific images or fall back to defaults
+  const normalizedName = medicineName.toLowerCase();
+  const images = productImages[normalizedName] || defaultImages;
 
   // Preload all images on mount
   useEffect(() => {
+    setCurrentImageIndex(0);
+    setLoadedImages(new Set());
+    
     images.forEach((image, index) => {
       preloadImage(image.src).then(() => {
         setLoadedImages(prev => new Set(prev).add(index));
@@ -165,13 +219,15 @@ export default function MedicineImageGallery({ medicineName }: MedicineImageGall
             )}
 
             {/* Image Counter */}
-            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity">
-              <div className="bg-background/90 backdrop-blur-sm rounded-lg px-3 py-1 border border-border/50">
-                <span className="text-sm text-muted-foreground">
-                  {currentImageIndex + 1} / {images.length}
-                </span>
+            {images.length > 1 && (
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity">
+                <div className="bg-background/90 backdrop-blur-sm rounded-lg px-3 py-1 border border-border/50">
+                  <span className="text-sm text-muted-foreground">
+                    {currentImageIndex + 1} / {images.length}
+                  </span>
+                </div>
               </div>
-            </div>
+            )}
           </div>
 
           {/* Current Image Label */}
@@ -198,37 +254,39 @@ export default function MedicineImageGallery({ medicineName }: MedicineImageGall
       </div>
 
       {/* Thumbnail Navigation */}
-      <div className="flex gap-2 justify-center pt-4">
-        {images.map((image, index) => (
-          <button
-            key={index}
-            onClick={() => handleImageSelect(index)}
-            className={`relative w-16 h-16 rounded-lg overflow-hidden border-2 transition-all duration-200 hover:scale-105 ${
-              index === currentImageIndex
-                ? 'border-primary shadow-lg'
-                : 'border-border/50 hover:border-primary/50'
-            }`}
-          >
-            {loadedImages.has(index) ? (
-              <img
-                src={image.src}
-                alt={image.alt}
-                className="w-full h-full object-contain bg-muted/30"
-              />
-            ) : (
-              <Skeleton className="w-full h-full" />
-            )}
-            <div className={`absolute inset-0 transition-opacity ${
-              index === currentImageIndex ? 'bg-primary/10' : 'bg-transparent hover:bg-primary/5'
-            }`} />
-          </button>
-        ))}
-      </div>
+      {images.length > 1 && (
+        <div className="flex gap-2 justify-center pt-4">
+          {images.map((image, index) => (
+            <button
+              key={index}
+              onClick={() => handleImageSelect(index)}
+              className={`relative w-16 h-16 rounded-lg overflow-hidden border-2 transition-all duration-200 hover:scale-105 ${
+                index === currentImageIndex
+                  ? 'border-primary shadow-lg'
+                  : 'border-border/50 hover:border-primary/50'
+              }`}
+            >
+              {loadedImages.has(index) ? (
+                <img
+                  src={image.src}
+                  alt={image.alt}
+                  className="w-full h-full object-contain bg-muted/30"
+                />
+              ) : (
+                <Skeleton className="w-full h-full" />
+              )}
+              <div className={`absolute inset-0 transition-opacity ${
+                index === currentImageIndex ? 'bg-primary/10' : 'bg-transparent hover:bg-primary/5'
+              }`} />
+            </button>
+          ))}
+        </div>
+      )}
 
       {/* Interaction Tips */}
       <div className="text-center">
         <p className="text-xs text-muted-foreground">
-          🖱️ Hover to see zoomed preview • 👆 Click thumbnails to switch views
+          🖱️ Hover to see zoomed preview {images.length > 1 && "• 👆 Click thumbnails to switch views"}
         </p>
       </div>
     </div>
