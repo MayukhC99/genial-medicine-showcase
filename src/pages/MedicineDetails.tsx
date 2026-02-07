@@ -87,22 +87,24 @@ export default function MedicineDetails() {
   return (
     <div className="min-h-screen bg-gradient-subtle">
       {/* Navigation Header */}
-      <div className="sticky top-0 z-50 bg-background/95 backdrop-blur-md border-b border-border/50">
-        <div className="max-w-7xl mx-auto px-6 py-4">
-          <div className="flex items-center justify-between">
+      <div className="sticky top-0 z-50 bg-background/95 backdrop-blur-md border-b border-border/50 overflow-x-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4">
+          <div className="flex items-center justify-between gap-2">
             <Button 
               variant="ghost" 
               onClick={() => navigate(-1)}
-              className="group"
+              className="group flex-shrink-0"
+              size="sm"
             >
               <ArrowLeft className="h-4 w-4 group-hover:-translate-x-1 transition-transform" />
-              Back to Medicines
+              <span className="hidden sm:inline">Back to Medicines</span>
+              <span className="sm:hidden">Back</span>
             </Button>
             
-            <div className="flex gap-2">
+            <div className="flex gap-2 flex-shrink-0">
               <Button variant="outline" size="sm" onClick={() => setShareDialogOpen(true)}>
                 <Share2 className="h-4 w-4" />
-                Share
+                <span className="hidden sm:inline">Share</span>
               </Button>
               <Button 
                 variant="medical" 
@@ -121,7 +123,8 @@ export default function MedicineDetails() {
                 className="disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 <Download className="h-4 w-4" />
-                Download PDF
+                <span className="hidden sm:inline">Download PDF</span>
+                <span className="sm:hidden">PDF</span>
               </Button>
             </div>
           </div>
