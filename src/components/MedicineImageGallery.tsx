@@ -91,9 +91,9 @@ const productImages: Record<string, GalleryImage[]> = {
     { src: genimolPlus, alt: "GeniMol Plus box", label: "Product View" }
   ],
   "geniorm": [
-    { src: geniorm1, alt: "GeniOrm box with blister strips", label: "With Strips" },
     { src: geniorm2, alt: "GeniOrm packaging box", label: "Packaging" },
-    { src: geniorm3, alt: "GeniOrm Micronised suspension", label: "Suspension" }
+    { src: geniorm1, alt: "GeniOrm box with blister strips", label: "Bolus" },
+    { src: geniorm3, alt: "GeniOrm Micronised suspension", label: "Oral suspension" }
   ],
   "geniplex": [
     { src: geniplex, alt: "GeniPlex product range", label: "Product Range" }
