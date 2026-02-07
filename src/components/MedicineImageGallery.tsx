@@ -24,6 +24,13 @@ import genimixBolus from "@/assets/products/genimix-bolus.jpeg";
 import genimolPlus from "@/assets/products/genimol-plus.jpeg";
 import geniorm1 from "@/assets/products/geniorm-1.jpeg";
 import geniorm2 from "@/assets/products/geniorm-2.jpeg";
+import geniorm3 from "@/assets/products/geniorm-3.jpeg";
+import geniplex from "@/assets/products/geniplex.jpeg";
+import genizoleCt from "@/assets/products/genizole-ct.jpeg";
+import genizoleNt from "@/assets/products/genizole-nt.jpeg";
+import improcefS from "@/assets/products/improcef-s.jpeg";
+import improlexin from "@/assets/products/improlexin.jpeg";
+import pmelogen from "@/assets/products/pmelogen.jpeg";
 
 interface MedicineImageGalleryProps {
   medicineName: string;
@@ -85,7 +92,26 @@ const productImages: Record<string, GalleryImage[]> = {
   ],
   "geniorm": [
     { src: geniorm1, alt: "GeniOrm box with blister strips", label: "With Strips" },
-    { src: geniorm2, alt: "GeniOrm packaging box", label: "Packaging" }
+    { src: geniorm2, alt: "GeniOrm packaging box", label: "Packaging" },
+    { src: geniorm3, alt: "GeniOrm Micronised suspension", label: "Suspension" }
+  ],
+  "geniplex": [
+    { src: geniplex, alt: "GeniPlex product range", label: "Product Range" }
+  ],
+  "genizole-ct": [
+    { src: genizoleCt, alt: "Genizole-CT powder container", label: "Product View" }
+  ],
+  "genizole-nt bolus": [
+    { src: genizoleNt, alt: "Genizole-NT Bolus box with tablets", label: "Product View" }
+  ],
+  "improcef-s": [
+    { src: improcefS, alt: "Improcef-S injection kit", label: "Product Kit" }
+  ],
+  "improlexin": [
+    { src: improlexin, alt: "Improlexin sachets", label: "Product View" }
+  ],
+  "pmelogen injection": [
+    { src: pmelogen, alt: "Pmelogen Injection bottle with box", label: "Product View" }
   ],
 };
 
