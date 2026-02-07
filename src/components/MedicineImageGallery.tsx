@@ -195,7 +195,13 @@ export default function MedicineImageGallery({ medicineName }: MedicineImageGall
             onMouseLeave={handleMouseLeave}
           >
             {!isCurrentImageLoaded ? (
-              <Skeleton className="w-full h-full" />
+              <div className="w-full h-full flex flex-col items-center justify-center bg-muted/30">
+                <div className="relative">
+                  <div className="w-16 h-16 border-4 border-primary/20 rounded-full"></div>
+                  <div className="absolute inset-0 w-16 h-16 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
+                </div>
+                <p className="mt-4 text-sm text-muted-foreground animate-pulse">Loading image...</p>
+              </div>
             ) : (
               <img
                 src={images[currentImageIndex].src}
