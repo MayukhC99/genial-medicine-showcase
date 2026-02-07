@@ -109,7 +109,7 @@ export default function MedicineCard({
             className="flex-1 sm:flex-none relative overflow-hidden group/pdf before:absolute before:inset-0 before:bg-primary before:origin-left before:scale-x-0 hover:before:scale-x-100 before:transition-transform before:duration-300 before:ease-out hover:text-primary-foreground hover:border-primary transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:before:scale-x-0"
           >
             <Download className="h-4 w-4 relative z-10 flex-shrink-0" />
-            <span className="relative z-10 truncate">PDF</span>
+            <span className="relative z-10 truncate">Download PDF</span>
           </Button>
         </div>
       </CardContent>
