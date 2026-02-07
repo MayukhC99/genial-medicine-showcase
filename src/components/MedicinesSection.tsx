@@ -1,9 +1,48 @@
 import MedicineCard from "@/components/MedicineCard";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Sparkles, User, PawPrint, ChevronDown } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+
+// Import all product images for preloading
+import genilivBottleBox from "@/assets/geniliv-bottle-box.jpg";
+import genilivBox from "@/assets/geniliv-box.jpg";
+import genicalDsGold from "@/assets/products/genical-ds-gold.jpeg";
+import genicalDs from "@/assets/products/genical-ds.jpeg";
+import genifenBolus from "@/assets/products/genifen-bolus.jpeg";
+import genilivVet from "@/assets/products/geniliv-vet.jpeg";
+import genimec1 from "@/assets/products/genimec-1.jpeg";
+import genimec2 from "@/assets/products/genimec-2.jpeg";
+import genimixBolus from "@/assets/products/genimix-bolus.jpeg";
+import genimolPlus from "@/assets/products/genimol-plus.jpeg";
+import geniorm1 from "@/assets/products/geniorm-1.jpeg";
+import geniorm2 from "@/assets/products/geniorm-2.jpeg";
+import geniorm3 from "@/assets/products/geniorm-3.jpeg";
+import geniplex from "@/assets/products/geniplex.jpeg";
+import genizoleCt from "@/assets/products/genizole-ct.jpeg";
+import genizoleNt from "@/assets/products/genizole-nt.jpeg";
+import improcefS from "@/assets/products/improcef-s.jpeg";
+import improlexin from "@/assets/products/improlexin.jpeg";
+import pmelogen from "@/assets/products/pmelogen.jpeg";
+
+// All product images to preload
+const allProductImages = [
+  genilivBottleBox, genilivBox, genicalDsGold, genicalDs, genifenBolus,
+  genilivVet, genimec1, genimec2, genimixBolus, genimolPlus,
+  geniorm1, geniorm2, geniorm3, geniplex, genizoleCt,
+  genizoleNt, improcefS, improlexin, pmelogen
+];
+
 export default function MedicinesSection() {
   const [expandedSection, setExpandedSection] = useState<string | null>(null);
+  
+  // Preload all product images when the home page loads
+  useEffect(() => {
+    allProductImages.forEach((src) => {
+      const img = new Image();
+      img.src = src;
+    });
+  }, []);
+  
   const toggleSection = (section: string) => {
     setExpandedSection(expandedSection === section ? null : section);
   };
