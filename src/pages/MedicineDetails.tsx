@@ -28,6 +28,7 @@ import {
   Check,
 } from "lucide-react";
 import { getMedicineBySlug, MedicineData } from "@/data/medicineData";
+import { handleDownloadPDF } from "@/utils/download";
 
 interface SideEffectItem {
   effect: string;
@@ -321,7 +322,11 @@ export default function MedicineDetails() {
               <Button variant="hero" size="lg" onClick={handleContactClick}>
                 Contact Medical Team
               </Button>
-              <Button variant="outline" size="lg">
+              <Button
+                variant="outline"
+                size="lg"
+                onClick={() => handleDownloadPDF('/pdfs/complete-catalog.pdf', 'complete-catalog')}
+              >
                 Download Complete Monograph
               </Button>
             </div>

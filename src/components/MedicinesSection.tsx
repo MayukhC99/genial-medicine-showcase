@@ -3,6 +3,9 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Sparkles, User, PawPrint, ChevronDown } from "lucide-react";
 import { useState, useEffect } from "react";
 
+// Import utility function for downloading PDFs
+import { handleDownloadPDF } from "@/utils/download";
+
 // Import all product images for preloading
 import genilivBottleBox from "@/assets/geniliv-bottle-box.jpg";
 import genilivBox from "@/assets/geniliv-box.jpg";
@@ -250,7 +253,12 @@ export default function MedicinesSection() {
               Get comprehensive product details, prescribing information, and clinical data
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button variant="hero" size="lg" className="group">
+              <Button
+                variant="hero"
+                size="lg"
+                className="group"
+                onClick={() => handleDownloadPDF('/pdfs/complete-catalog.pdf', 'complete-catalog')}
+              >
                 Download Complete Catalog
                 <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </Button>
