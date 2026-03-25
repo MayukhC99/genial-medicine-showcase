@@ -10,27 +10,35 @@ import medicineBottle3 from "@/assets/medicine-bottle-3.jpg";
 import medicineBox1 from "@/assets/medicine-box-1.jpg";
 
 // Human GeniLiv images
-import genilivBottleBox from "@/assets/geniliv-bottle-box.jpg";
-import genilivBox from "@/assets/geniliv-box.jpg";
+import genilivBottleBox from "@/assets/products/geniliv-bottle-box.jpg";
+import genilivBox from "@/assets/products/geniliv-box.jpg";
 
 // Veterinary product images
-import genicalDsGold from "@/assets/products/genical-ds-gold.jpeg";
-import genicalDs from "@/assets/products/genical-ds.jpeg";
-import genifenBolus from "@/assets/products/genifen-bolus.jpeg";
-import genilivVet from "@/assets/products/geniliv-vet.jpeg";
-import genimec1 from "@/assets/products/genimec-1.jpeg";
-import genimec2 from "@/assets/products/genimec-2.jpeg";
-import genimixBolus from "@/assets/products/genimix-bolus.jpeg";
-import genimolPlus from "@/assets/products/genimol-plus.jpeg";
-import geniorm1 from "@/assets/products/geniorm-1.jpeg";
-import geniorm2 from "@/assets/products/geniorm-2.jpeg";
-import geniorm3 from "@/assets/products/geniorm-3.jpeg";
-import geniplex from "@/assets/products/geniplex.jpeg";
-import genizoleCt from "@/assets/products/genizole-ct.jpeg";
-import genizoleNt from "@/assets/products/genizole-nt.jpeg";
-import improcefS from "@/assets/products/improcef-s.jpeg";
+import genicalDsGold from "@/assets/products/genical-ds-gold.jpg";
+import genicalDs1 from "@/assets/products/genical-ds-1.jpg";
+import genicalDs2 from "@/assets/products/genical-ds-2.jpg";
+import genifenBolus1 from "@/assets/products/genifen-bolus-1.jpg";
+import genifenBolus2 from "@/assets/products/genifen-bolus-2.jpg";
+import genilivVet from "@/assets/products/geniliv-vet.jpg";
+import genimec1 from "@/assets/products/genimec-1.jpg";
+import genimec2 from "@/assets/products/genimec-2.jpg";
+import genimec3 from "@/assets/products/genimec-3.jpg";
+import genimixBolus from "@/assets/products/genimix-bolus.jpg";
+import genimolPlus1 from "@/assets/products/genimol-plus-1.jpg";
+import genimolPlus2 from "@/assets/products/genimol-plus-2.jpg";
+import geniorm1 from "@/assets/products/geniorm-1.jpg";
+import geniorm2 from "@/assets/products/geniorm-2.jpg";
+import geniplex from "@/assets/products/geniplex.jpg";
+import genizoleCt from "@/assets/products/genizole-ct.jpg";
+import genizoleNt1 from "@/assets/products/genizole-nt-1.jpg";
+import genizoleNt2 from "@/assets/products/genizole-nt-2.jpg";
+import improcefS1 from "@/assets/products/improcef-s-1.jpg";
+import improcefS2 from "@/assets/products/improcef-s-2.jpg";
 import improlexin from "@/assets/products/improlexin.jpeg";
-import pmelogen from "@/assets/products/pmelogen.jpeg";
+import pmelogen from "@/assets/products/pmelogen.jpg";
+import gromivit from "@/assets/products/gromivit.jpg";
+import geniboost from "@/assets/products/geniboost.jpg";
+import floxenro from "@/assets/products/floxenro.jpg";
 
 interface MedicineImageGalleryProps {
   medicineName: string;
@@ -65,35 +73,41 @@ const preloadImage = (src: string): Promise<void> => {
 // Product-specific image configurations
 const productImages: Record<string, GalleryImage[]> = {
   "geniliv": [
-    { src: genilivBottleBox, alt: "GeniLiv bottle with packaging", label: "Product View" },
-    { src: genilivBox, alt: "GeniLiv packaging box", label: "Packaging" }
+    { src: genilivBox, alt: "GeniLiv packaging box", label: "Packaging" },
+    { src: genilivBottleBox, alt: "GeniLiv bottle with packaging", label: "Product View" }
   ],
   "genical-ds gold": [
     { src: genicalDsGold, alt: "Genical-DS Gold bottle", label: "Product View" }
   ],
   "genical-ds": [
-    { src: genicalDs, alt: "Genical-DS bottle", label: "Product View" }
+    { src: genicalDs1, alt: "Genical-DS 5l bottle", label: "5l Bottle" },
+    { src: genicalDs2, alt: "Genical-DS 1l & 500ml bottle", label: "1l & 500ml Bottles" }
+  ],
+  "geniboost": [
+    { src: geniboost, alt: "GeniBoost product range", label: "Product Range" }
   ],
   "genifen bolus": [
-    { src: genifenBolus, alt: "GeniFen Bolus box with tablets", label: "Product View" }
+    { src: genifenBolus1, alt: "GeniFen Bolus box", label: "Product View" },
+    { src: genifenBolus2, alt: "GeniFen Bolus box with tablets", label: "Bolus" }
   ],
   "geniliv vet": [
-    { src: genilivVet, alt: "GeniLiv Vet product range", label: "Product Range" }
+    { src: genilivVet, alt: "Geniliv Vet product range", label: "Product Range" }
   ],
   "genimec": [
-    { src: genimec1, alt: "Genimec product range", label: "Product Range" },
-    { src: genimec2, alt: "Genimec injection with box", label: "Injection" }
+    { src: genimec1, alt: "Genimec Tablets", label: "Tablets" },
+    { src: genimec2, alt: "Genimec Bolus", label: "Bolus" },
+    { src: genimec3, alt: "Genimec injection", label: "Injection" }
   ],
   "genimix bolus": [
-    { src: genimixBolus, alt: "GeniMix Bolus box with tablets", label: "Product View" }
+    { src: genimixBolus, alt: "GeniMix Bolus box", label: "Product View" }
   ],
-  "genimol plus": [
-    { src: genimolPlus, alt: "GeniMol Plus box", label: "Product View" }
+  "genimol-plus": [
+    { src: genimolPlus1, alt: "GeniMol Plus box", label: "Product View" },
+    { src: genimolPlus2, alt: "GeniMol Plus Tablets", label: "Tablets" }
   ],
   "geniorm": [
-    { src: geniorm2, alt: "GeniOrm packaging box", label: "Packaging" },
-    { src: geniorm1, alt: "GeniOrm box with blister strips", label: "Bolus" },
-    { src: geniorm3, alt: "GeniOrm Micronised suspension", label: "Oral suspension" }
+    { src: geniorm1, alt: "Geniorm Bolus", label: "Bolus" },
+    { src: geniorm2, alt: "Geniorm Oral suspension", label: "Oral suspension" }
   ],
   "geniplex": [
     { src: geniplex, alt: "GeniPlex product range", label: "Product Range" }
@@ -102,16 +116,24 @@ const productImages: Record<string, GalleryImage[]> = {
     { src: genizoleCt, alt: "Genizole-CT powder container", label: "Product View" }
   ],
   "genizole-nt bolus": [
-    { src: genizoleNt, alt: "Genizole-NT Bolus box with tablets", label: "Product View" }
+    { src: genizoleNt1, alt: "Genizole-NT Packaging box", label: "Packaging" },
+    { src: genizoleNt2, alt: "Genizole-NT Bolus box with tablets", label: "Bolus" }
   ],
   "improcef-s": [
-    { src: improcefS, alt: "Improcef-S injection kit", label: "Product Kit" }
+    { src: improcefS1, alt: "Improcef-S product range", label: "Product Range" },
+    { src: improcefS2, alt: "Improcef-S injection kit", label: "Product Kit" }
   ],
   "improlexin": [
     { src: improlexin, alt: "Improlexin sachets", label: "Product View" }
   ],
   "pmelogen injection": [
     { src: pmelogen, alt: "Pmelogen Injection bottle with box", label: "Product View" }
+  ],
+  "gromivit": [
+    { src: gromivit, alt: "Gromivit product range", label: "Product Range" }
+  ],
+  "floxenro": [
+    { src: floxenro, alt: "Floxenro bottle", label: "Product View" }
   ],
 };
 

@@ -7,32 +7,42 @@ import { useState, useEffect } from "react";
 import { handleDownloadPDF } from "@/utils/download";
 
 // Import all product images for preloading
-import genilivBottleBox from "@/assets/geniliv-bottle-box.jpg";
-import genilivBox from "@/assets/geniliv-box.jpg";
-import genicalDsGold from "@/assets/products/genical-ds-gold.jpeg";
-import genicalDs from "@/assets/products/genical-ds.jpeg";
-import genifenBolus from "@/assets/products/genifen-bolus.jpeg";
-import genilivVet from "@/assets/products/geniliv-vet.jpeg";
-import genimec1 from "@/assets/products/genimec-1.jpeg";
-import genimec2 from "@/assets/products/genimec-2.jpeg";
-import genimixBolus from "@/assets/products/genimix-bolus.jpeg";
-import genimolPlus from "@/assets/products/genimol-plus.jpeg";
-import geniorm1 from "@/assets/products/geniorm-1.jpeg";
-import geniorm2 from "@/assets/products/geniorm-2.jpeg";
-import geniorm3 from "@/assets/products/geniorm-3.jpeg";
-import geniplex from "@/assets/products/geniplex.jpeg";
-import genizoleCt from "@/assets/products/genizole-ct.jpeg";
-import genizoleNt from "@/assets/products/genizole-nt.jpeg";
-import improcefS from "@/assets/products/improcef-s.jpeg";
+import genilivBottleBox from "@/assets/products/geniliv-bottle-box.jpg";
+import genilivBox from "@/assets/products/geniliv-box.jpg";
+import genicalDsGold from "@/assets/products/genical-ds-gold.jpg";
+import genicalDs1 from "@/assets/products/genical-ds-1.jpg";
+import genicalDs2 from "@/assets/products/genical-ds-2.jpg";
+import genifenBolus1 from "@/assets/products/genifen-bolus-1.jpg";
+import genifenBolus2 from "@/assets/products/genifen-bolus-2.jpg";
+import genilivVet from "@/assets/products/geniliv-vet.jpg";
+import genimec1 from "@/assets/products/genimec-1.jpg";
+import genimec2 from "@/assets/products/genimec-2.jpg";
+import genimec3 from "@/assets/products/genimec-3.jpg";
+import genimixBolus from "@/assets/products/genimix-bolus.jpg";
+import genimolPlus1 from "@/assets/products/genimol-plus-1.jpg";
+import genimolPlus2 from "@/assets/products/genimol-plus-2.jpg";
+import geniorm1 from "@/assets/products/geniorm-1.jpg";
+import geniorm2 from "@/assets/products/geniorm-2.jpg";
+import geniplex from "@/assets/products/geniplex.jpg";
+import genizoleCt from "@/assets/products/genizole-ct.jpg";
+import genizoleNt1 from "@/assets/products/genizole-nt-1.jpg";
+import genizoleNt2 from "@/assets/products/genizole-nt-2.jpg";
+import improcefS1 from "@/assets/products/improcef-s-1.jpg";
+import improcefS2 from "@/assets/products/improcef-s-2.jpg";
 import improlexin from "@/assets/products/improlexin.jpeg";
-import pmelogen from "@/assets/products/pmelogen.jpeg";
+import pmelogen from "@/assets/products/pmelogen.jpg";
+import gromivit from "@/assets/products/gromivit.jpg";
+import geniboost from "@/assets/products/geniboost.jpg";
+import floxenro from "@/assets/products/floxenro.jpg";
 
 // All product images to preload
 const allProductImages = [
-  genilivBottleBox, genilivBox, genicalDsGold, genicalDs, genifenBolus,
-  genilivVet, genimec1, genimec2, genimixBolus, genimolPlus,
-  geniorm1, geniorm2, geniorm3, geniplex, genizoleCt,
-  genizoleNt, improcefS, improlexin, pmelogen
+  genilivBottleBox, genilivBox, genicalDsGold, floxenro,
+  genilivVet, genimec1, genimec2, genimec3, genimixBolus,
+  geniorm1, geniorm2, geniplex, genizoleCt, genizoleNt1,
+  genizoleNt2, improlexin, pmelogen, gromivit, geniboost,
+  improcefS1, improcefS2, genimolPlus1, genimolPlus2,
+  genicalDs1, genicalDs2, genifenBolus1, genifenBolus2
 ];
 
 export default function MedicinesSection() {
