@@ -34,6 +34,8 @@ import pmelogen from "@/assets/products/pmelogen.jpg";
 import gromivit from "@/assets/products/gromivit.jpg";
 import geniboost from "@/assets/products/geniboost.jpg";
 import floxenro from "@/assets/products/floxenro.jpg";
+import genimixForte1 from "@/assets/products/genimix-forte-1.jpeg";
+import genimixForte2 from "@/assets/products/genimix-forte-2.jpeg";
 
 // All product images to preload
 const allProductImages = [
@@ -41,6 +43,7 @@ const allProductImages = [
   genilivVet, genimec1, genimec2, genimec3, genimixBolus,
   geniorm1, geniorm2, geniplex, genizoleCt, genizoleNt1,
   genizoleNt2, improlexin, pmelogen, gromivit, geniboost,
+  genimixForte1, genimixForte2,
   improcefS1, improcefS2, genimolPlus1, genimolPlus2,
   genicalDs1, genicalDs2, genifenBolus1, genifenBolus2
 ];
