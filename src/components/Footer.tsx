@@ -66,7 +66,7 @@ export default function Footer() {
             
             <p className="text-background/80 leading-relaxed mb-4 text-sm">
               Pioneering pharmaceutical excellence for over {getYearsOfExcellence()} years, delivering 
-              innovative medicines that transform lives.
+              medicines that transform lives.
             </p>
             
             <div className="space-y-2">
