@@ -86,8 +86,40 @@ export default function MedicineDetails() {
     );
   }
 
+  const pageTitle = `${medicine.name} - ${medicine.category} | Genial Health Care`;
+  const pageDescription = medicine.description.slice(0, 155);
+  const canonicalUrl = `https://genialhealthcare.com/medicine/${medicineName}`;
+
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": medicine.name,
+    "description": medicine.description,
+    "brand": {
+      "@type": "Brand",
+      "name": "Genial Health Care"
+    },
+    "manufacturer": {
+      "@type": "Organization",
+      "name": "Genial Health Care Pvt. Ltd."
+    },
+    "category": medicine.category,
+    "url": canonicalUrl
+  };
+
   return (
     <div className="min-h-screen bg-gradient-subtle">
+      <Helmet>
+        <title>{pageTitle}</title>
+        <meta name="description" content={pageDescription} />
+        <link rel="canonical" href={canonicalUrl} />
+        <meta property="og:title" content={pageTitle} />
+        <meta property="og:description" content={pageDescription} />
+        <meta property="og:url" content={canonicalUrl} />
+        <meta property="og:type" content="product" />
+        <meta property="og:site_name" content="Genial Health Care" />
+        <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
+      </Helmet>
       {/* Navigation Header */}
       <div className="sticky top-0 z-50 bg-background/95 backdrop-blur-md border-b border-border/50 overflow-x-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4">
