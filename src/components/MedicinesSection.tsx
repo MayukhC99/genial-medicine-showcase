@@ -72,14 +72,14 @@ export default function MedicinesSection() {
   }];
   const veterinaryMedicines = [{
     name: "Genical-DS Gold",
-    category: "Calcium & Lactation",
+    category: "Calcium & Galactagogues",
     description: "Double strength of calcium, phosphorus and Vitamin AD3 with galactagogues for enhanced milk production and better health.",
     features: ["Improves milk yield & health", "Enhances milk let-down", "Better growth, strong bones", "Butterfat in milk and SNF content"],
     isPopular: true,
     pdfUrl: "/pdfs/genical-ds-gold-brochure.pdf"
   }, {
     name: "Genical-DS",
-    category: "Calcium Supplement",
+    category: "Calcium & Vitamin AD3",
     description: "Double power liquid feed supplement with calcium, phosphorus and Vitamin AD3 for improved milk production and health.",
     features: ["Increased milk production", "Better growth, strong bones", "Fulfills calcium & phosphorus needs", "Must for reproduction & lactation"],
     pdfUrl: "/pdfs/genical-ds-brochure.pdf"
@@ -98,9 +98,9 @@ export default function MedicinesSection() {
     pdfUrl: "/pdfs/geniliv-vet-brochure.pdf"
   }, {
     name: "Genimix Bolus",
-    category: "Probiotic & Enzyme",
+    category: "Probiotic & Prebiotic",
     description: "Accomplished mixture of prebiotic, probiotic, enzyme & growth stimulants for improved ruminal function and appetite.",
-    features: ["Prevents pathogenic bacteria", "Increases ruminal microflora", "Normalizes appetite in anorexia", "Helps prevent diarrhea"],
+    features: ["Normalizes appetite in anorexia", "Increases ruminal microflora", "Prevents pathogenic bacteria", "Helps prevent diarrhea"],
     pdfUrl: "/pdfs/genimix-bolus-brochure.pdf"
   }, {
     name: "Genimix Forte",
