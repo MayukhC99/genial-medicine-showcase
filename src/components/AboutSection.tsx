@@ -107,9 +107,7 @@ export default function AboutSection() {
             </p>
             
             <p className="text-lg text-muted-foreground leading-relaxed">
-              Our commitment to excellence, combined with cutting-edge research and 
-              manufacturing capabilities, has established us as a trusted partner for 
-              healthcare professionals worldwide.
+              Our strong focus on quality, consistency, and responsible manufacturing has established us as a trusted partner for healthcare professionals across India. This commitment ensures every product we deliver is safe, effective, and built on trust.
             </p>
           </div>
           
