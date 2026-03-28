@@ -28,6 +28,7 @@ export default function Footer() {
     { label: "Geniboost", href: "/medicine/geniboost" },
     { label: "Geniliv Vet", href: "/medicine/geniliv-vet" },
     { label: "Genimix Bolus", href: "/medicine/genimix-bolus" },
+    { label: "Genimix Forte", href: "/medicine/genimix-forte" },
     { label: "Geniplex", href: "/medicine/geniplex" },
     { label: "Gromivit", href: "/medicine/gromivit" },
     { label: "Genizole-NT Bolus", href: "/medicine/genizole-nt-bolus" },

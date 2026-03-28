@@ -259,6 +259,52 @@ export const medicineData: Record<string, MedicineData> = {
     pdfUrl: "/pdfs/genimix-bolus-brochure.pdf"
   },
 
+  "genimix-forte": {
+    name: "Genimix Forte",
+    category: "Mineral Mixture Powder",
+    color: "#ea580c",
+    type: "veterinary",
+    description: "Feed Supplement with Calcium, Phosphorus, Vitamin A, D3, E & Minerals.",
+    servingSize: "Each 1 Kg contains:",
+    composition: [
+      { ingredient: "Vitamin A", strength: "7,00,000 I.U." },
+      { ingredient: "Vitamin D3", strength: "70,000 I.U." },
+      { ingredient: "Vitamin E", strength: "275 mg" },
+      { ingredient: "Nicotinamide", strength: "1000 mg" },
+      { ingredient: "Cobalt", strength: "150 mg" },
+      { ingredient: "Copper", strength: "3.5 gm" },
+      { ingredient: "Iodine", strength: "325 mg" },
+      { ingredient: "Iron", strength: "1.5 gm" },
+      { ingredient: "Magnesium", strength: "6 gm" },
+      { ingredient: "Manganese", strength: "1.5 gm" },
+      { ingredient: "Potassium", strength: "100 mg" },
+      { ingredient: "Selenium", strength: "10 mg" },
+      { ingredient: "Sodium", strength: "6 mg" },
+      { ingredient: "Sulphur", strength: "7.2 mg" },
+      { ingredient: "Zinc", strength: "8 gm" },
+      { ingredient: "Calcium", strength: "255 gm" },
+      { ingredient: "Phosphorus", strength: "127.5 gm" },
+      { ingredient: "Chromium", strength: "65 mg" },
+      { ingredient: "Base", strength: "Q.S." }
+    ],
+    indications: [
+      "Enhance Milk",
+      "Better Health",
+      "Maintaining fertility & growth rate",
+      "Improves Immunity"
+    ],
+    dosage: "Cow & Buffalo: 30 gm/day for maintenance & up to 50 gm/day for higher milk production\nCalf, Sheep & Goat: 15 to 25 gm/day for Improve Immunity, better health & weight gain\nPig: 25 to 30 gm/day for Improve Immunity, better health & weight gain\nHorse: 50 gm/day\n1 kg-2 kg to be mixed in 100 kg of feed or as recommended by Animal Nutritionist",
+    sideEffects: [
+      { effect: "Generally well tolerated", severity: "low" }
+    ],
+    contraindications: [
+      "Use as directed by veterinarian"
+    ],
+    storage: "Store in a cool, dry place. Keep away from moisture.",
+    shelfLife: "As mentioned on pack",
+    pdfUrl: "/pdfs/genimix-forte-brochure.pdf"
+  },
+
   "geniplex": {
     name: "Geniplex",
     category: "B-Complex",

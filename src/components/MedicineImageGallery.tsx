@@ -24,6 +24,8 @@ import genimec1 from "@/assets/products/genimec-1.jpg";
 import genimec2 from "@/assets/products/genimec-2.jpg";
 import genimec3 from "@/assets/products/genimec-3.jpg";
 import genimixBolus from "@/assets/products/genimix-bolus.jpg";
+import genimixForte1 from "@/assets/products/genimix-forte-1.jpeg";
+import genimixForte2 from "@/assets/products/genimix-forte-2.jpeg";
 import genimolPlus1 from "@/assets/products/genimol-plus-1.jpg";
 import genimolPlus2 from "@/assets/products/genimol-plus-2.jpg";
 import geniorm1 from "@/assets/products/geniorm-1.jpg";
@@ -100,6 +102,10 @@ const productImages: Record<string, GalleryImage[]> = {
   ],
   "genimix bolus": [
     { src: genimixBolus, alt: "GeniMix Bolus box", label: "Product View" }
+  ],
+  "genimix forte": [
+    { src: genimixForte2, alt: "Genimix Forte front packaging", label: "Front View" },
+    { src: genimixForte1, alt: "Genimix Forte back with composition", label: "Back View" }
   ],
   "genimol-plus": [
     { src: genimolPlus1, alt: "GeniMol Plus box", label: "Product View" },
