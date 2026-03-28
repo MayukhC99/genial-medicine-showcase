@@ -72,14 +72,14 @@ export default function MedicinesSection() {
   }];
   const veterinaryMedicines = [{
     name: "Genical-DS Gold",
-    category: "Calcium & Galactagogues",
+    category: "Calcium c̄ Galactogouges",
     description: "Double strength of calcium, phosphorus and Vitamin AD3 with galactagogues for enhanced milk production and better health.",
     features: ["Improves milk yield & health", "Enhances milk let-down", "Better growth, strong bones", "Butterfat in milk and SNF content"],
     isPopular: true,
     pdfUrl: "/pdfs/genical-ds-gold-brochure.pdf"
   }, {
     name: "Genical-DS",
-    category: "Calcium & Vitamin AD3",
+    category: "Calcium c̄ Vitamin AD3",
     description: "Double power liquid feed supplement with calcium, phosphorus and Vitamin AD3 for improved milk production and health.",
     features: ["Increased milk production", "Better growth, strong bones", "Fulfills calcium & phosphorus needs", "Must for reproduction & lactation"],
     pdfUrl: "/pdfs/genical-ds-brochure.pdf"

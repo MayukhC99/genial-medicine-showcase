@@ -61,7 +61,7 @@ export const medicineData: Record<string, MedicineData> = {
   // Veterinary Healthcare
   "genical-ds-gold": {
     name: "Genical-DS Gold",
-    category: "Calcium & Lactation",
+    category: "Calcium c̄ Galactogouges",
     color: "#f59e0b",
     type: "veterinary",
     description: "Double strength of calcium, phosphorus and Vitamin AD3 with galactagogues for enhanced milk production and better health.",
@@ -103,7 +103,7 @@ export const medicineData: Record<string, MedicineData> = {
 
   "genical-ds": {
     name: "Genical-DS",
-    category: "Calcium Supplement",
+    category: "Calcium c̄ Vitamin AD3",
     color: "#0ea5e9",
     type: "veterinary",
     description: "Double power liquid feed supplement with calcium, phosphorus and Vitamin AD3 for improved milk production and health.",
@@ -219,7 +219,7 @@ export const medicineData: Record<string, MedicineData> = {
 
   "genimix-bolus": {
     name: "Genimix Bolus",
-    category: "Probiotic & Enzyme",
+    category: "Probiotic & Prebiotic",
     color: "#8b5cf6",
     type: "veterinary",
     description: "Accomplished mixture of prebiotic, probiotic, enzyme & growth stimulants for improved ruminal function and appetite.",
@@ -242,9 +242,9 @@ export const medicineData: Record<string, MedicineData> = {
       { ingredient: "Excipients", strength: "Q.S." }
     ],
     indications: [
-      "Prevents pathogenic bacteria",
-      "Increases ruminal microflora",
       "Normalizes appetite in anorexia",
+      "Increases ruminal microflora",
+      "Prevents pathogenic bacteria",
       "Helps prevent diarrhea"
     ],
     dosage: "½ to 2 Bolus twice daily (depending upon the weight and severity of disease of the animal) OR as directed by veterinary practitioner",
