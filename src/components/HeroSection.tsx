@@ -84,7 +84,7 @@ export default function HeroSection() {
           </h1>
           
           <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed">
-            Where quality medicine drives real impact
+            <TypewriterText text="Where quality medicine drives real impact" speed={45} />
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
