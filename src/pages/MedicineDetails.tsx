@@ -104,7 +104,17 @@ export default function MedicineDetails() {
       "name": "Genial Health Care Pvt. Ltd."
     },
     "category": medicine.category,
-    "url": canonicalUrl
+    "url": canonicalUrl,
+    "offers": {
+      "@type": "Offer",
+      "availability": "https://schema.org/InStock",
+      "priceCurrency": "INR",
+      "price": "0",
+      "seller": {
+        "@type": "Organization",
+        "name": "Genial Health Care Pvt. Ltd."
+      }
+    }
   };
 
   return (
