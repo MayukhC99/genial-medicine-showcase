@@ -100,6 +100,12 @@ export default function MedicinesSection() {
     features: ["Prevents pathogenic bacteria", "Increases ruminal microflora", "Normalizes appetite in anorexia", "Helps prevent diarrhea"],
     pdfUrl: "/pdfs/genimix-bolus-brochure.pdf"
   }, {
+    name: "Genimix Forte",
+    category: "Mineral Mixture Powder",
+    description: "Feed Supplement with Calcium, Phosphorus, Vitamin A, D3, E & Minerals for enhanced health and milk production.",
+    features: ["Enhance Milk & Better Health", "Maintaining fertility & growth rate", "Improves Immunity", "Chelated mineral formula"],
+    pdfUrl: "/pdfs/genimix-forte-brochure.pdf"
+  }, {
     name: "Geniplex",
     category: "B-Complex",
     description: "Complete B-complex rich in vitamins B1 and H for proper metabolism, nervous system function and energy conversion.",
