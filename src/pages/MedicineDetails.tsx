@@ -130,6 +130,7 @@ export default function MedicineDetails() {
         <meta property="og:description" content={pageDescription} />
         <meta property="og:url" content={canonicalUrl} />
         <meta property="og:type" content="product" />
+        <meta property="og:image" content={productImage} />
         <meta property="og:site_name" content="Genial Health Care" />
         <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
       </Helmet>
