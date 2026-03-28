@@ -90,11 +90,14 @@ export default function MedicineDetails() {
   const pageDescription = medicine.description.slice(0, 155);
   const canonicalUrl = `https://genialhealthcare.com/medicine/${medicineName}`;
 
+  const productImage = `https://genialhealthcare.com/images/products/${medicineName}.jpg`;
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Product",
     "name": medicine.name,
     "description": medicine.description,
+    "image": productImage,
     "brand": {
       "@type": "Brand",
       "name": "Genial Health Care"
@@ -127,6 +130,7 @@ export default function MedicineDetails() {
         <meta property="og:description" content={pageDescription} />
         <meta property="og:url" content={canonicalUrl} />
         <meta property="og:type" content="product" />
+        <meta property="og:image" content={productImage} />
         <meta property="og:site_name" content="Genial Health Care" />
         <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
       </Helmet>
