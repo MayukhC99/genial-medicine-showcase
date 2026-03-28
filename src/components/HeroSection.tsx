@@ -4,27 +4,62 @@ import { ArrowRight, Stethoscope, Award, Users } from "lucide-react";
 import heroImage from "@/assets/medical-hero.jpg";
 import { useCountUp, getYearsOfExcellence } from "@/hooks/useCountUp";
 
-function TypewriterText({ text, speed = 50 }: { text: string; speed?: number }) {
+function TypewriterText({ text }: { text: string }) {
   const [displayed, setDisplayed] = useState("");
+  const [showCursor, setShowCursor] = useState(true);
   const [done, setDone] = useState(false);
 
   useEffect(() => {
     let i = 0;
-    const interval = setInterval(() => {
+    let cancelled = false;
+
+    const typeNext = () => {
+      if (cancelled || i >= text.length) {
+        if (!cancelled) setDone(true);
+        return;
+      }
       i++;
       setDisplayed(text.slice(0, i));
-      if (i >= text.length) {
-        clearInterval(interval);
-        setDone(true);
+
+      const char = text[i - 1];
+      const isSpace = char === ' ';
+      const isPunctuation = ['.', ',', '!', '?'].includes(char);
+
+      // Realistic delays: pause at spaces/punctuation, vary keystroke timing
+      let delay: number;
+      if (isPunctuation) {
+        delay = 280 + Math.random() * 200; // longer pause after punctuation
+      } else if (isSpace) {
+        delay = 80 + Math.random() * 120; // brief pause between words
+      } else {
+        delay = 35 + Math.random() * 45; // natural keystroke variation
       }
-    }, speed);
-    return () => clearInterval(interval);
-  }, [text, speed]);
+
+      setTimeout(typeNext, delay);
+    };
+
+    // Initial delay before typing starts
+    setTimeout(typeNext, 600);
+
+    return () => { cancelled = true; };
+  }, [text]);
+
+  // Hide cursor 1s after typing finishes
+  useEffect(() => {
+    if (!done) return;
+    const t = setTimeout(() => setShowCursor(false), 1000);
+    return () => clearTimeout(t);
+  }, [done]);
 
   return (
     <span>
       {displayed}
-      <span className={`inline-block w-[3px] h-[1.1em] bg-primary align-middle ml-1 ${done ? 'animate-pulse' : ''}`} />
+      {showCursor && (
+        <span
+          className="inline-block w-[3px] h-[1.1em] bg-primary align-middle ml-0.5"
+          style={{ animation: 'cursorBlink 530ms steps(1) infinite' }}
+        />
+      )}
     </span>
   );
 }
@@ -84,7 +119,7 @@ export default function HeroSection() {
           </h1>
           
           <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed">
-            <TypewriterText text="Where quality medicine drives real impact" speed={45} />
+            <TypewriterText text="Where quality medicine drives real impact." />
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
