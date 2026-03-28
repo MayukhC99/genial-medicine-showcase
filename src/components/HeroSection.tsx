@@ -1,7 +1,33 @@
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Stethoscope, Award, Users } from "lucide-react";
 import heroImage from "@/assets/medical-hero.jpg";
 import { useCountUp, getYearsOfExcellence } from "@/hooks/useCountUp";
+
+function TypewriterText({ text, speed = 50 }: { text: string; speed?: number }) {
+  const [displayed, setDisplayed] = useState("");
+  const [done, setDone] = useState(false);
+
+  useEffect(() => {
+    let i = 0;
+    const interval = setInterval(() => {
+      i++;
+      setDisplayed(text.slice(0, i));
+      if (i >= text.length) {
+        clearInterval(interval);
+        setDone(true);
+      }
+    }, speed);
+    return () => clearInterval(interval);
+  }, [text, speed]);
+
+  return (
+    <span>
+      {displayed}
+      <span className={`inline-block w-[3px] h-[1.1em] bg-primary align-middle ml-1 ${done ? 'animate-pulse' : ''}`} />
+    </span>
+  );
+}
 
 function AnimatedStat({ end, suffix = "", label, colorClass }: { end: number; suffix?: string; label: string; colorClass: string }) {
   const { count, ref } = useCountUp({ end, duration: 2000 });
@@ -58,7 +84,7 @@ export default function HeroSection() {
           </h1>
           
           <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed">
-            Where quality medicine drives real impact
+            <TypewriterText text="Where quality medicine drives real impact" speed={45} />
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
