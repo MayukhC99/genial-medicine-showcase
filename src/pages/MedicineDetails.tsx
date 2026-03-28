@@ -140,7 +140,7 @@ export default function MedicineDetails() {
           <div className="flex items-center justify-between gap-2">
             <Button 
               variant="ghost" 
-              onClick={() => navigate(-1)}
+              onClick={() => navigate('/#medicines')}
               className="group flex-shrink-0"
               size="sm"
             >
