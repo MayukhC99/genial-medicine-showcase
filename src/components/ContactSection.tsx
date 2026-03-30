@@ -11,7 +11,7 @@ export default function ContactSection() {
   const contactInfo = [
     {
       icon: MapPin,
-      title: "Head Office",
+      title: "Registered Office",
       details: "ESER MINERAL COMPLEX, MURAGACHA P.O. Jugberia",
       subDetails: "Kolkata - 700110, West Bengal"
     },
