@@ -1,8 +1,43 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Stethoscope, Award, Users } from "lucide-react";
 import heroImage from "@/assets/medical-hero.jpg";
 import { useCountUp, getYearsOfExcellence } from "@/hooks/useCountUp";
+
+function WaveTitle({ text }: { text: string }) {
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+
+  const getStyle = useCallback((i: number) => {
+    if (hoveredIndex === null) return {};
+    const dist = Math.abs(i - hoveredIndex);
+    if (dist > 5) return {};
+    const intensity = 1 - dist / 6;
+    return {
+      transform: `translateY(${-12 * intensity}px) scale(${1 + 0.08 * intensity})`,
+      filter: `hue-rotate(${intensity * 40}deg) brightness(${1 + 0.3 * intensity})`,
+      textShadow: `0 0 ${20 * intensity}px hsl(160 55% 50% / ${0.6 * intensity})`,
+      transition: `all ${0.15 + dist * 0.04}s cubic-bezier(0.34, 1.56, 0.64, 1)`,
+    };
+  }, [hoveredIndex]);
+
+  return (
+    <span
+      className="inline-block"
+      onMouseLeave={() => setHoveredIndex(null)}
+    >
+      {text.split("").map((char, i) => (
+        <span
+          key={i}
+          className="inline-block bg-gradient-primary bg-clip-text text-transparent cursor-default"
+          style={getStyle(i)}
+          onMouseEnter={() => setHoveredIndex(i)}
+        >
+          {char === " " ? "\u00A0" : char}
+        </span>
+      ))}
+    </span>
+  );
+}
 
 function TypewriterText({ text }: { text: string }) {
   const [displayed, setDisplayed] = useState("");
@@ -114,8 +149,8 @@ export default function HeroSection() {
       {/* Main Content */}
       <div className="relative z-10 max-w-6xl mx-auto px-6 text-center">
         <div className="animate-fade-in-up">
-          <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold mb-6 bg-gradient-primary bg-clip-text text-transparent leading-tight">
-            Genial Health Care
+          <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight">
+            <WaveTitle text="Genial Health Care" />
           </h1>
           
           <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed">
