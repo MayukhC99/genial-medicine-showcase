@@ -336,7 +336,7 @@ export const medicineData: Record<string, MedicineData> = {
       { animal: "Calf, Sheep & Goat", dose: "15-25 gm/day" },
       { animal: "Pig", dose: "25-30 gm/day" },
       { animal: "Horse", dose: "50 gm/day" },
-      { animal: "Feed Mix", dose: "1-2 kg per 100 kg of feed" }
+      { animal: "Feed Mix", dose: "1-2 kg per 100 kg of feed or as directed by Animal Nutritionist" }
     ],
     sideEffects: [
       { effect: "Generally well tolerated", severity: "low" }
