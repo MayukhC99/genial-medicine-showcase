@@ -74,10 +74,10 @@ export default function MedicinesSection() {
     isPopular: true,
     pdfUrl: "/pdfs/geniliv-brochure.pdf"
   }, {
-    name: "IMPROCID",
+    name: "Improcid",
     category: "Acid Reflux, Heartburn & Indigestion",
     description: "A potent remedial amalgamation for rapid and long-lasting relief —mechanically (by forming a barrier) & chemically (as an antacid).",
-    features: ["Acid Reflux (GERD)", "Heartburn", "Indigestion", "Heartburn during pregnancy (under medical advice) and for symptoms that occur after meals"],
+    features: ["Acid Reflux (GERD)", "Heartburn", "Indigestion", "Heartburn in pregnancy & post-meal symptoms"],
     pdfUrl: "/pdfs/improcid-brochure.pdf"
   }];
   const veterinaryMedicines = [{
