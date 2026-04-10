@@ -41,6 +41,9 @@ import pmelogen from "@/assets/products/pmelogen.jpg";
 import gromivit from "@/assets/products/gromivit.jpg";
 import geniboost from "@/assets/products/geniboost.jpg";
 import floxenro from "@/assets/products/floxenro.jpg";
+import improcid1 from "@/assets/products/improcid-1.jpg";
+import improcid2 from "@/assets/products/improcid-2.jpg";
+import improcid3 from "@/assets/products/improcid-3.jpg";
 
 interface MedicineImageGalleryProps {
   medicineName: string;
@@ -140,6 +143,11 @@ const productImages: Record<string, GalleryImage[]> = {
   ],
   "floxenro": [
     { src: floxenro, alt: "Floxenro bottle", label: "Product View" }
+  ],
+  "improcid": [
+    { src: improcid1, alt: "Improcid box packaging", label: "Packaging" },
+    { src: improcid2, alt: "Improcid bottle", label: "Bottle" },
+    { src: improcid3, alt: "Improcid box with bottle", label: "Product View" }
   ],
 };
 
