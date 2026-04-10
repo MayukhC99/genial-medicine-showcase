@@ -1,4 +1,5 @@
 import { useParams, useNavigate, useLocation } from "react-router-dom";
+import ThemeToggle from "@/components/ThemeToggle";
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { Button } from "@/components/ui/button";
@@ -149,7 +150,8 @@ export default function MedicineDetails() {
               <span className="sm:hidden">Back</span>
             </Button>
             
-            <div className="flex gap-2 flex-shrink-0">
+            <div className="flex items-center gap-2 flex-shrink-0">
+              <ThemeToggle />
               <Button variant="outline" size="sm" onClick={() => setShareDialogOpen(true)}>
                 <Share2 className="h-4 w-4" />
                 <span className="hidden sm:inline">Share</span>
