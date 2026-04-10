@@ -23,6 +23,7 @@ export default function Footer() {
 
   const productLinks = [
     { label: "Geniliv", href: "/medicine/geniliv" },
+    { label: "Improcid", href: "/medicine/improcid" },
     { label: "Genical-DS Gold", href: "/medicine/genical-ds-gold" },
     { label: "Genical-DS", href: "/medicine/genical-ds" },
     { label: "Geniboost", href: "/medicine/geniboost" },

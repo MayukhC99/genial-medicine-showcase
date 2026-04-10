@@ -36,6 +36,9 @@ import geniboost from "@/assets/products/geniboost.jpg";
 import floxenro from "@/assets/products/floxenro.jpg";
 import genimixForte1 from "@/assets/products/genimix-forte-1.jpeg";
 import genimixForte2 from "@/assets/products/genimix-forte-2.jpeg";
+import improcid1 from "@/assets/products/improcid-1.jpg";
+import improcid2 from "@/assets/products/improcid-2.jpg";
+import improcid3 from "@/assets/products/improcid-3.jpg";
 
 // All product images to preload
 const allProductImages = [
@@ -45,7 +48,8 @@ const allProductImages = [
   genizoleNt2, improlexin, pmelogen, gromivit, geniboost,
   genimixForte1, genimixForte2,
   improcefS1, improcefS2, genimolPlus1, genimolPlus2,
-  genicalDs1, genicalDs2, genifenBolus1, genifenBolus2
+  genicalDs1, genicalDs2, genifenBolus1, genifenBolus2,
+  improcid1, improcid2, improcid3
 ];
 
 export default function MedicinesSection() {
@@ -69,6 +73,12 @@ export default function MedicinesSection() {
     features: ["Fatty and Chronic liver disease", "Liver damage caused by alcohol, toxins", "Hepatoprotective, antioxidant", "Fatigue, poor appetite, and indigestion"],
     isPopular: true,
     pdfUrl: "/pdfs/geniliv-brochure.pdf"
+  }, {
+    name: "IMPROCID",
+    category: "Acid Reflux, Heartburn & Indigestion",
+    description: "A potent remedial amalgamation for rapid and long-lasting relief —mechanically (by forming a barrier) & chemically (as an antacid).",
+    features: ["Acid Reflux (GERD)", "Heartburn", "Indigestion", "Heartburn during pregnancy (under medical advice) and for symptoms that occur after meals"],
+    pdfUrl: "/pdfs/improcid-brochure.pdf"
   }];
   const veterinaryMedicines = [{
     name: "Genical-DS Gold",

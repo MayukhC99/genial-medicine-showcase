@@ -23,6 +23,7 @@ export interface MedicineData {
   storage: string;
   shelfLife: string;
   pdfUrl?: string;
+  precautions?: string;
 }
 
 export const medicineData: Record<string, MedicineData> = {
@@ -56,6 +57,39 @@ export const medicineData: Record<string, MedicineData> = {
     storage: "Store in a cool, dry place below 30°C. Keep away from direct sunlight.",
     shelfLife: "As mentioned on pack",
     pdfUrl: "/pdfs/geniliv-brochure.pdf"
+  },
+
+  "improcid": {
+    name: "Improcid",
+    category: "Fast-acting gastro-protective",
+    color: "#16a34a",
+    type: "human",
+    description: "A potent remedial amalgamation for rapid & long-lasting relief —mechanically (by forming a barrier) & chemically (as an antacid).",
+    servingSize: "Each 5 ml contains:",
+    composition: [
+      { ingredient: "Sodium Alginate IP", strength: "250 mg" },
+      { ingredient: "Sodium Bicarbonate IP", strength: "133.5 mg" },
+      { ingredient: "Calcium Carbonate IP", strength: "80 mg" }
+    ],
+    indications: [
+      "Acid Reflux (GERD)",
+      "Heartburn & Indigestion",
+      "Heartburn during pregnancy (under medical advice)",
+      "For symptoms that occur after meals"
+    ],
+    dosage: "Adults and Children (over 12 years): 10-20 ml & Children (6-12 yrs.): 5-10 ml after meals and at bedtime OR as directed by the Physician.",
+    sideEffects: [
+      { effect: "Mild gastrointestinal disturbance", severity: "low" },
+      { effect: "Allergic reactions (rare)", severity: "medium" }
+    ],
+    contraindications: [
+      "Hypersensitivity to any component",
+      "Pregnancy and lactation (consult physician)"
+    ],
+    storage: "Store in a cool, dry place below 30°C. Keep away from direct sunlight.",
+    shelfLife: "As mentioned on pack",
+    pdfUrl: "/pdfs/improcid-brochure.pdf",
+    precautions: "Do not use if allergic to any ingredient. Care should be taken if on a highly restricted sodium diet e.g. in some cases of congestive cardiac failure, renal impairment, hypertension and oedemic states. Care needs to be taken in treating patients with hypercalcaemia, nephrocalcinosis and recurrent calcium containing renal calculi. A time interval of 2 hours should be considered between alginate intake and administration of other medicinal products."
   },
 
   // Veterinary Healthcare
