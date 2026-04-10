@@ -7,12 +7,21 @@ import { useCountUp, getYearsOfExcellence } from "@/hooks/useCountUp";
 function WaveTitle({ text }: { text: string }) {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
-  const getColor = useCallback((i: number) => {
-    if (hoveredIndex === null) return undefined;
+  const getStyle = useCallback((i: number): React.CSSProperties => {
+    if (hoveredIndex === null) return {};
     const dist = Math.abs(i - hoveredIndex);
-    if (dist > 1) return undefined;
-    const intensity = 1 - dist / 2;
-    return `hsl(45 85% ${55 + (1 - intensity) * 15}% / ${0.5 * intensity + 0.5})`;
+    if (dist > 2) return {};
+    const intensity = 1 - dist / 3;
+    // Bright emerald/mint green that contrasts with the base green gradient
+    const hue = 160 - intensity * 10; // shift toward teal at center
+    const lightness = 50 + intensity * 18; // brighter at center
+    return {
+      color: `hsl(${hue} 80% ${lightness}%)`,
+      WebkitTextFillColor: `hsl(${hue} 80% ${lightness}%)`,
+      backgroundImage: 'none',
+      textShadow: `0 0 ${12 * intensity}px hsl(${hue} 80% ${lightness}% / ${0.4 * intensity})`,
+      transition: `all ${0.25 + dist * 0.08}s ease-out`,
+    };
   }, [hoveredIndex]);
 
   return (
@@ -21,19 +30,13 @@ function WaveTitle({ text }: { text: string }) {
       onMouseLeave={() => setHoveredIndex(null)}
     >
       {text.split("").map((char, i) => {
-        const color = getColor(i);
+        const style = getStyle(i);
+        const hasHover = Object.keys(style).length > 0;
         return (
           <span
             key={i}
-            className={`inline-block cursor-default ${!color ? 'bg-gradient-primary bg-clip-text text-transparent' : ''}`}
-            style={color ? {
-              color,
-              WebkitTextFillColor: color,
-              backgroundImage: 'none',
-              transition: 'color 0.3s ease, -webkit-text-fill-color 0.3s ease',
-            } : {
-              transition: 'color 0.3s ease, -webkit-text-fill-color 0.3s ease',
-            }}
+            className={`inline-block cursor-default ${!hasHover ? 'bg-gradient-primary bg-clip-text text-transparent' : ''}`}
+            style={{ transition: 'all 0.35s ease-out', ...style }}
             onMouseEnter={() => setHoveredIndex(i)}
           >
             {char === " " ? "\u00A0" : char}
