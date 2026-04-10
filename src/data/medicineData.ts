@@ -77,7 +77,10 @@ export const medicineData: Record<string, MedicineData> = {
       "Heartburn during pregnancy (under medical advice)",
       "For symptoms that occur after meals"
     ],
-    dosage: "Adults and Children (over 12 years): 10-20 ml & Children (6-12 yrs.): 5-10 ml after meals and at bedtime OR as directed by the Physician.",
+    dosage: [
+      { animal: "Adults & Children (over 12 years)", dose: "10-20 ml after meals & at bedtime" },
+      { animal: "Children (6-12 years)", dose: "5-10 ml after meals & at bedtime" }
+    ],
     sideEffects: [
       { effect: "Mild gastrointestinal disturbance", severity: "low" },
       { effect: "Allergic reactions (rare)", severity: "medium" }
@@ -327,7 +330,14 @@ export const medicineData: Record<string, MedicineData> = {
       "Maintaining fertility & growth rate",
       "Improves Immunity"
     ],
-    dosage: "Cow & Buffalo: 30 gm/day for maintenance & up to 50 gm/day for higher milk production\nCalf, Sheep & Goat: 15 to 25 gm/day for Improve Immunity, better health & weight gain\nPig: 25 to 30 gm/day for Improve Immunity, better health & weight gain\nHorse: 50 gm/day\n1 kg-2 kg to be mixed in 100 kg of feed or as recommended by Animal Nutritionist",
+    dosage: [
+      { animal: "Cow & Buffalo (Maintenance)", dose: "30 gm/day" },
+      { animal: "Cow & Buffalo (Higher Milk)", dose: "Up to 50 gm/day" },
+      { animal: "Calf, Sheep & Goat", dose: "15-25 gm/day" },
+      { animal: "Pig", dose: "25-30 gm/day" },
+      { animal: "Horse", dose: "50 gm/day" },
+      { animal: "Feed Mix", dose: "1-2 kg per 100 kg of feed" }
+    ],
     sideEffects: [
       { effect: "Generally well tolerated", severity: "low" }
     ],
