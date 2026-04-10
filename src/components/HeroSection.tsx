@@ -10,10 +10,9 @@ function WaveTitle({ text }: { text: string }) {
   const getColor = useCallback((i: number) => {
     if (hoveredIndex === null) return undefined;
     const dist = Math.abs(i - hoveredIndex);
-    if (dist > 4) return undefined;
-    const intensity = 1 - dist / 5;
-    // Subtle warm gold wash that fades outward
-    return `hsl(45 85% ${55 + (1 - intensity) * 15}% / ${0.6 * intensity + 0.4})`;
+    if (dist > 1) return undefined;
+    const intensity = 1 - dist / 2;
+    return `hsl(45 85% ${55 + (1 - intensity) * 15}% / ${0.5 * intensity + 0.5})`;
   }, [hoveredIndex]);
 
   return (
@@ -26,12 +25,14 @@ function WaveTitle({ text }: { text: string }) {
         return (
           <span
             key={i}
-            className="inline-block cursor-default"
-            style={{
-              color: color ?? undefined,
-              WebkitTextFillColor: color ?? undefined,
-              backgroundImage: color ? 'none' : undefined,
-              transition: 'color 0.4s ease, -webkit-text-fill-color 0.4s ease',
+            className={`inline-block cursor-default ${!color ? 'bg-gradient-primary bg-clip-text text-transparent' : ''}`}
+            style={color ? {
+              color,
+              WebkitTextFillColor: color,
+              backgroundImage: 'none',
+              transition: 'color 0.3s ease, -webkit-text-fill-color 0.3s ease',
+            } : {
+              transition: 'color 0.3s ease, -webkit-text-fill-color 0.3s ease',
             }}
             onMouseEnter={() => setHoveredIndex(i)}
           >
