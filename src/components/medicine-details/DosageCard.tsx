@@ -31,12 +31,12 @@ export function DosageCard({ dosage }: DosageCardProps) {
             <>
               {/* Dosage Table */}
               <div className="bg-primary/10 px-4 py-3 border-b border-border/50">
-                <p className="font-semibold text-primary">Recommended Dosage by Animal Type</p>
+                <p className="font-semibold text-primary">Recommended Dosage</p>
               </div>
               <Table>
                 <TableHeader>
                   <TableRow className="hover:bg-transparent">
-                    <TableHead className="font-semibold text-foreground">Animal Type</TableHead>
+                    <TableHead className="font-semibold text-foreground">Category</TableHead>
                     <TableHead className="font-semibold text-foreground text-right">Dosage</TableHead>
                   </TableRow>
                 </TableHeader>
