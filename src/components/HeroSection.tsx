@@ -149,8 +149,8 @@ export default function HeroSection() {
       {/* Main Content */}
       <div className="relative z-10 max-w-6xl mx-auto px-6 text-center">
         <div className="animate-fade-in-up">
-          <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold mb-6 bg-gradient-primary bg-clip-text text-transparent leading-tight">
-            Genial Health Care
+          <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight">
+            <WaveTitle text="Genial Health Care" />
           </h1>
           
           <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed">
