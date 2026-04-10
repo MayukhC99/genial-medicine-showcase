@@ -23,6 +23,7 @@ export interface MedicineData {
   storage: string;
   shelfLife: string;
   pdfUrl?: string;
+  precautions?: string;
 }
 
 export const medicineData: Record<string, MedicineData> = {
