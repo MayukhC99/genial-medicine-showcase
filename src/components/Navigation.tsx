@@ -6,7 +6,6 @@ import genialLogo from "@/assets/genial-logo.jpeg";
 
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { theme, toggleTheme } = useTheme();
 
   const navItems = [
     { label: "Home", href: "#home" },
@@ -44,27 +43,12 @@ export default function Navigation() {
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-primary group-hover:w-full transition-all duration-300" />
               </a>
             ))}
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={toggleTheme}
-              className="ml-2 hover:bg-secondary/50"
-              aria-label="Toggle theme"
-            >
-              {theme === "light" ? <Moon className="h-5 w-5" /> : <Sun className="h-5 w-5" />}
-            </Button>
+            <ThemeToggle />
           </div>
 
           {/* Mobile Menu Buttons */}
           <div className="flex items-center gap-2 md:hidden">
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={toggleTheme}
-              aria-label="Toggle theme"
-            >
-              {theme === "light" ? <Moon className="h-5 w-5" /> : <Sun className="h-5 w-5" />}
-            </Button>
+            <ThemeToggle />
             <Button
               variant="ghost"
               size="icon"
