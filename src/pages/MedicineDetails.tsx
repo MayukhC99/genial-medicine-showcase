@@ -316,6 +316,20 @@ export default function MedicineDetails() {
                   </CardContent>
                 </Card>
               </div>
+
+              {medicine.precautions && (
+                <Card className="shadow-medical">
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-2 text-amber-600">
+                      <AlertTriangle className="h-5 w-5" />
+                      Precautions
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-muted-foreground leading-relaxed">{medicine.precautions}</p>
+                  </CardContent>
+                </Card>
+              )}
             </TabsContent>
 
             <TabsContent value="storage" className="space-y-6">

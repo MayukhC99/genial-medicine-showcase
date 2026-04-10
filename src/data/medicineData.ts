@@ -88,7 +88,8 @@ export const medicineData: Record<string, MedicineData> = {
     ],
     storage: "Store in a cool, dry place below 30°C. Keep away from direct sunlight.",
     shelfLife: "As mentioned on pack",
-    pdfUrl: "/pdfs/improcid-brochure.pdf"
+    pdfUrl: "/pdfs/improcid-brochure.pdf",
+    precautions: "Do not use if allergic to any ingredient. Care should be taken if on a highly restricted sodium diet e.g. in some cases of congestive cardiac failure, renal impairment, hypertension and oedemic states. Care needs to be taken in treating patients with hypercalcaemia, nephrocalcinosis and recurrent calcium containing renal calculi. A time interval of 2 hours should be considered between alginate intake and administration of other medicinal products."
   },
 
   // Veterinary Healthcare
