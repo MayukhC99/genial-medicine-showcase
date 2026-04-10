@@ -1,48 +1,37 @@
-import { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Stethoscope, Award, Users } from "lucide-react";
 import heroImage from "@/assets/medical-hero.jpg";
 import { useCountUp, getYearsOfExcellence } from "@/hooks/useCountUp";
 
 function WaveTitle({ text }: { text: string }) {
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const containerRef = React.useRef<HTMLSpanElement>(null);
+  const [mousePos, setMousePos] = useState<{ x: number; y: number } | null>(null);
 
-  const getStyle = useCallback((i: number): React.CSSProperties => {
-    if (hoveredIndex === null) return {};
-    const dist = Math.abs(i - hoveredIndex);
-    if (dist > 2) return {};
-    const intensity = 1 - dist / 3;
-    // Bright emerald/mint green that contrasts with the base green gradient
-    const hue = 160 - intensity * 10; // shift toward teal at center
-    const lightness = 50 + intensity * 18; // brighter at center
-    return {
-      color: `hsl(${hue} 80% ${lightness}%)`,
-      WebkitTextFillColor: `hsl(${hue} 80% ${lightness}%)`,
-      backgroundImage: 'none',
-      textShadow: `0 0 ${12 * intensity}px hsl(${hue} 80% ${lightness}% / ${0.4 * intensity})`,
-      transition: `all ${0.25 + dist * 0.08}s ease-out`,
-    };
-  }, [hoveredIndex]);
+  const handleMouseMove = useCallback((e: React.MouseEvent) => {
+    if (!containerRef.current) return;
+    const rect = containerRef.current.getBoundingClientRect();
+    setMousePos({ x: e.clientX - rect.left, y: e.clientY - rect.top });
+  }, []);
 
   return (
     <span
-      className="inline-block"
-      onMouseLeave={() => setHoveredIndex(null)}
+      ref={containerRef}
+      className="inline-block relative"
+      onMouseMove={handleMouseMove}
+      onMouseLeave={() => setMousePos(null)}
+      style={{
+        backgroundImage: mousePos
+          ? `radial-gradient(circle 45px at ${mousePos.x}px ${mousePos.y}px, hsl(155 80% 65%) 0%, hsl(150 75% 58%) 40%, transparent 100%), var(--gradient-primary)`
+          : 'var(--gradient-primary)',
+        WebkitBackgroundClip: 'text',
+        backgroundClip: 'text',
+        color: 'transparent',
+        cursor: 'default',
+        transition: mousePos ? 'none' : 'background 0.4s ease-out',
+      }}
     >
-      {text.split("").map((char, i) => {
-        const style = getStyle(i);
-        const hasHover = Object.keys(style).length > 0;
-        return (
-          <span
-            key={i}
-            className={`inline-block cursor-default ${!hasHover ? 'bg-gradient-primary bg-clip-text text-transparent' : ''}`}
-            style={{ transition: 'all 0.35s ease-out', ...style }}
-            onMouseEnter={() => setHoveredIndex(i)}
-          >
-            {char === " " ? "\u00A0" : char}
-          </span>
-        );
-      })}
+      {text}
     </span>
   );
 }
