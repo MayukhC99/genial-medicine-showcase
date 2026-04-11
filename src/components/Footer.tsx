@@ -61,7 +61,7 @@ export default function Footer() {
                 alt="Genial Healthcare Logo" 
                 className="h-10 w-10 rounded-lg object-cover"
               />
-              <WaveTitle text="Genial Health Care" className="text-xl font-bold" />
+              <WaveTitle text="Genial Health Care" className="text-xl font-bold" variant="light" />
             </div>
             
             <p className="text-background/80 leading-relaxed mb-4 text-sm">
