@@ -8,6 +8,7 @@ import {
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import genialLogo from "@/assets/genial-logo.jpeg";
+import WaveTitle from "@/components/WaveTitle";
 import { getYearsOfExcellence } from "@/hooks/useCountUp";
 export default function Footer() {
   const scrollToTop = () => {
@@ -60,9 +61,7 @@ export default function Footer() {
                 alt="Genial Healthcare Logo" 
                 className="h-10 w-10 rounded-lg object-cover"
               />
-              <span className="text-xl font-bold">
-                Genial Health Care
-              </span>
+              <WaveTitle text="Genial Health Care" className="text-xl font-bold" />
             </div>
             
             <p className="text-background/80 leading-relaxed mb-4 text-sm">
