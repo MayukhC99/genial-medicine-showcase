@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import ThemeToggle from "@/components/ThemeToggle";
+import WaveTitle from "@/components/WaveTitle";
 import genialLogo from "@/assets/genial-logo.jpeg";
 
 export default function Navigation() {
@@ -25,9 +26,7 @@ export default function Navigation() {
               alt="Genial Healthcare Logo" 
               className="h-10 w-10 rounded-lg object-cover group-hover:scale-105 transition-transform duration-300"
             />
-            <span className="text-xl font-bold bg-gradient-primary bg-clip-text text-transparent">
-              Genial Health Care
-            </span>
+            <WaveTitle text="Genial Health Care" className="text-xl font-bold" />
           </a>
 
           {/* Desktop Navigation */}
